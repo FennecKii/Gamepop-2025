@@ -18,6 +18,7 @@ enum SymbolID {BLANK, APPLE, BANANA, CHERRY, KIWI, WATERMELON, TOMATO, AVOCADO, 
 
 var bank: int
 var goal: int
+
 var slot_display: Array[int]
 
 # Handles initialization of player's bank values, target money goal, slot machine size and display array initialization

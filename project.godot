@@ -14,6 +14,7 @@ config/name="Gamepop 2025 Let's Go Gambling!"
 run/main_scene="uid://pt4ljk687pwo"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
 Global="*res://Scripts/Global.gd"
 
 [autoload]
