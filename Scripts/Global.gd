@@ -8,7 +8,7 @@ var apple_texture = preload("res://icon.svg")
 
 var bank: int
 var goal: int
-var slot_display: Array[int] = []
+var slot_display: Array[int] = [1,2,3,3,3]
 var slot_count: int = 5
 
 # Handles initialization of player's bank values, target money goal, slot machine size and display array initialization
