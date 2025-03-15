@@ -9,6 +9,8 @@ extends Control
 ]
 
 func _on_spin_button_pressed():
+	Global.slot_display = []
 	for slot in slot_displays:
 		var chosen_symbol = randi_range(0, 3) #len(Global.SymbolID) - 1)
 		slot.texture = Global.texture_array[chosen_symbol]
+		Global.slot_display.append(chosen_symbol)
