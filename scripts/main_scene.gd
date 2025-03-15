@@ -57,14 +57,11 @@ func check_results():
 			update_score()
 			return  # Skip other calculations if 5 of a kind is met
 
-# Add cherry points
+	# Add cherry points
 	Global.player_score += score_to_add
 	# Apply multiplier (Bananas and 7s)
 	Global.player_score *= multiplier
-
-	print(counts)
-	print(score_to_add)
-	print(multiplier)
+	
 	update_score()
 	update_labels()
 
@@ -81,7 +78,7 @@ func win_check():
 		Global.init_game_state(round_num, initial_target, 0, Global.player_money)
 		win_panel.visible = true
 	
-	elif spin_num == Global.max_spins and Global.player_score < Global.target_score and round_num <= Global.max_rounds: # Lose condition
+	elif spin_num == Global.max_spins and Global.player_score < Global.target_score and round_num <= Global.max_rounds or Global.player_money == 0: # Lose condition
 		spin_num = 0
 		round_num = 1
 		lose_panel.visible = true
@@ -94,11 +91,11 @@ func _on_slot_machine_spin_pressed():
 		win_check()
 
 func update_score():
-	score_label.text = "Score: " + str(Global.player_score)
+	score_label.text = str(Global.player_score)
 
 func update_labels():
 	rounds_label.text = "Round: " + str(round_num)
-	spins_label.text = "Spins Left: " + str(Global.max_spins - spin_num)
+	spins_label.text = "Spins\n" + str(Global.max_spins - spin_num)
 	goal_label.text = "Goal: " + str(Global.target_score)
 
 func _on_shop_pressed():

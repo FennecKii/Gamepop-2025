@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://lyxde0wt0s42"]
+[gd_scene load_steps=6 format=3 uid="uid://b3h2vmy126gmd"]
 
-[ext_resource type="Script" uid="uid://df3o4chinak62" path="res://Scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://df3o4chinak62" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://d4d6x4qfu18co" path="res://icon.svg" id="2_bqqt6"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="3_bqqt6"]
 
@@ -33,22 +33,22 @@ corner_radius_bottom_left = 4
 script = ExtResource("1_ekxnf")
 
 [node name="Background" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 640.0
+offset_right = 1296.0
+offset_bottom = 736.0
 color = Color(0.389203, 0.477871, 0.469872, 1)
 
 [node name="Title" type="Sprite2D" parent="."]
-position = Vector2(576, 176)
+position = Vector2(640, 176)
 scale = Vector2(4, 1)
 texture = ExtResource("2_bqqt6")
 
 [node name="Buttons" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 2.0
-offset_top = 3.0
-offset_right = 1152.0
-offset_bottom = 683.0
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 1222.0
+offset_bottom = 712.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 

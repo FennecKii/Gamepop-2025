@@ -1,20 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvbntob5i42x"]
+[gd_scene load_steps=5 format=3 uid="uid://dyesgrb31hily"]
 
-[ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://Scripts/main_scene.gd" id="1_pw63i"]
+[ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://pt4ljk687pwo" path="res://scenes/slot_machine_ui.tscn" id="2_7ykc4"]
 [ext_resource type="Texture2D" uid="uid://nlnn6p8sgqo6" path="res://assets/Background.png" id="2_pu3yx"]
+[ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="4_pu3yx"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 38.0
+offset_bottom = 21.0
 script = ExtResource("1_pw63i")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1280.0
+offset_bottom = 720.0
 texture = ExtResource("2_pu3yx")
 
 [node name="SlotMachineUI" parent="." instance=ExtResource("2_7ykc4")]
@@ -22,47 +23,61 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -59.0
-offset_top = 60.0
-offset_right = 557.0
-offset_bottom = 316.0
+offset_left = 216.0
+offset_top = 128.0
+offset_right = 832.0
+offset_bottom = 384.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
+metadata/_edit_group_ = true
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 576.0
-offset_top = 461.0
-offset_right = 780.0
-offset_bottom = 502.0
+offset_left = 851.0
+offset_top = 541.0
+offset_right = 979.0
+offset_bottom = 571.625
+theme_override_fonts/font = ExtResource("4_pu3yx")
+theme_override_font_sizes/font_size = 30
+text = "Score"
+metadata/_edit_group_ = true
 
 [node name="GoalLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 407.0
-offset_top = 256.0
-offset_right = 503.0
-offset_bottom = 292.0
-theme_override_font_sizes/font_size = 26
+offset_left = 684.0
+offset_top = 330.0
+offset_right = 738.0
+offset_bottom = 346.333
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(1, 0.538199, 0.0466134, 1)
+theme_override_fonts/font = ExtResource("4_pu3yx")
 text = "Goal"
+metadata/_edit_group_ = true
 
 [node name="Round" type="Label" parent="."]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 77.0
-offset_right = 216.0
-offset_bottom = 107.0
+offset_left = 64.0
+offset_top = 104.0
+offset_right = 153.0
+offset_bottom = 125.438
+theme_override_colors/font_color = Color(0.237104, 0.740125, 0.7382, 1)
+theme_override_fonts/font = ExtResource("4_pu3yx")
 theme_override_font_sizes/font_size = 21
 text = "Round"
 
 [node name="Spins" type="Label" parent="."]
 layout_mode = 0
-offset_left = 625.0
-offset_top = 597.0
-offset_right = 667.0
-offset_bottom = 646.0
+offset_left = 1034.0
+offset_top = 613.0
+offset_right = 1097.0
+offset_bottom = 648.333
+scale = Vector2(0.75, 0.75)
+theme_override_fonts/font = ExtResource("4_pu3yx")
 text = "Spins
 "
+horizontal_alignment = 1
+metadata/_edit_group_ = true
 
 [node name="WinRoundPanel" type="ColorRect" parent="."]
 visible = false
