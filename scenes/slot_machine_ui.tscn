@@ -1,8 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://pt4ljk687pwo"]
+[gd_scene load_steps=6 format=3 uid="uid://pt4ljk687pwo"]
 
-[ext_resource type="Script" uid="uid://x5p8u6hl35wa" path="res://scripts/slot_machine.gd" id="1_x6tmx"]
+[ext_resource type="Script" uid="uid://x5p8u6hl35wa" path="res://Scripts/slot_machine.gd" id="1_x6tmx"]
 [ext_resource type="Texture2D" uid="uid://ckp53kewda5th" path="res://assets/Slot-Machine2.0.png" id="2_5ams1"]
 [ext_resource type="Texture2D" uid="uid://bbmeyvmt3c1l3" path="res://assets/Cherry.png" id="2_icp5i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ams1"]
+bg_color = Color(0.490196, 0.0705882, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.670588, 0.12549, 0.992157, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6ofq"]
+bg_color = Color(0.490196, 0.0705882, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.670588, 0.12549, 0.992157, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
 
 [node name="SlotMachineUI" type="Control"]
 layout_mode = 3
@@ -22,9 +48,9 @@ texture = ExtResource("2_5ams1")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 232.0
-offset_top = 152.0
+offset_top = 137.0
 offset_right = 419.0
-offset_bottom = 218.0
+offset_bottom = 203.0
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -62,8 +88,53 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("2_icp5i")
 
-[node name="SpinButton" type="Button" parent="VBoxContainer"]
+[node name="SpinButton" type="Button" parent="."]
 layout_mode = 2
-text = "Spin!"
+offset_left = 338.0
+offset_top = 233.0
+offset_right = 405.0
+offset_bottom = 265.0
+scale = Vector2(0.91, 0.91)
 
-[connection signal="pressed" from="VBoxContainer/SpinButton" to="." method="_on_spin_button_pressed"]
+[node name="Label" type="Label" parent="SpinButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 32.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Minus Button" type="Button" parent="."]
+offset_left = 260.0
+offset_top = 237.0
+offset_right = 297.0
+offset_bottom = 262.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ams1")
+text = "-
+"
+
+[node name="Plus Button" type="Button" parent="."]
+offset_left = 220.0
+offset_top = 237.0
+offset_right = 257.0
+offset_bottom = 262.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_s6ofq")
+text = "+"
+
+[node name="PlayerMoney" type="Label" parent="."]
+offset_left = 217.0
+offset_top = 266.0
+offset_right = 287.0
+offset_bottom = 293.0
+theme_override_font_sizes/font_size = 10
+text = "Money:"
+
+[connection signal="pressed" from="SpinButton" to="." method="_on_spin_button_pressed"]
+[connection signal="pressed" from="Minus Button" to="." method="_on_minus_button_pressed"]
+[connection signal="pressed" from="Plus Button" to="." method="_on_plus_button_pressed"]
