@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://deeutm2utbgpx"]
+[gd_scene load_steps=4 format=3 uid="uid://dyesgrb31hily"]
 
-[ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_pw63i"]
+[ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://pt4ljk687pwo" path="res://scenes/slot_machine_ui.tscn" id="2_7ykc4"]
+[ext_resource type="Texture2D" uid="uid://nlnn6p8sgqo6" path="res://assets/Background.png" id="2_pu3yx"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -10,48 +11,55 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_pw63i")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 784.0
+offset_bottom = 648.0
+texture = ExtResource("2_pu3yx")
+
 [node name="SlotMachineUI" parent="." instance=ExtResource("2_7ykc4")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 496.0
-offset_top = 232.0
-offset_right = 632.0
-offset_bottom = 256.0
+offset_left = -256.0
+offset_top = 56.0
+offset_right = 360.0
+offset_bottom = 312.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 104.0
-offset_right = 112.0
-offset_bottom = 128.0
+offset_left = 80.0
+offset_top = 136.0
+offset_right = 128.0
+offset_bottom = 160.0
 text = "Score"
 
 [node name="GoalLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 120.0
-offset_bottom = 87.0
+offset_left = 80.0
+offset_top = 104.0
+offset_right = 136.0
+offset_bottom = 127.0
 text = "Goal"
 
 [node name="Round" type="Label" parent="."]
 layout_mode = 0
-offset_left = 552.0
-offset_top = 16.0
-offset_right = 603.0
-offset_bottom = 39.0
+offset_left = 80.0
+offset_top = 72.0
+offset_right = 131.0
+offset_bottom = 95.0
 text = "Round"
 
 [node name="Spins" type="Label" parent="."]
 layout_mode = 0
-offset_left = 552.0
-offset_top = 512.0
-offset_right = 594.0
-offset_bottom = 561.0
+offset_left = 80.0
+offset_top = 168.0
+offset_right = 122.0
+offset_bottom = 217.0
 text = "Spins
 "
 

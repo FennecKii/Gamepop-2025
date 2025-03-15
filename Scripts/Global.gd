@@ -1,7 +1,7 @@
 extends Node
 
 # Enums for slot symbol textures
-enum SymbolID {BLANK, CHERRY, BANANA, SEVEN, KIWI, WATERMELON, TOMATO, AVOCADO, PINEAPPLE, STRAWBERRY, MANGO}
+enum IconID {BLANK, CHERRY, BANANA, SEVEN, KIWI, WATERMELON, TOMATO, AVOCADO, PINEAPPLE, STRAWBERRY, MANGO}
 
 # Preload textures for slot symbols
 @onready var blank_texture = preload("res://icon.svg")
@@ -11,22 +11,25 @@ enum SymbolID {BLANK, CHERRY, BANANA, SEVEN, KIWI, WATERMELON, TOMATO, AVOCADO, 
 
 @onready var texture_array: Array = [
 		blank_texture,
-		banana_texture,
 		cherry_texture,
+		banana_texture,
 		seven_texture
 ]
 
-var bank: int = 0
-var goal: int = 10000
-var max_rounds: int = 5
-var max_spins: int = 5
-var slot_display: Array[int]
-var default_prob_array: Array[int] = [1, 2, 3]
-var player_prob_array: Array[int] = [1, 2, 3]
+const max_rounds: int = 5
+const max_spins: int = 5
+
+var player_score: int
+var player_money: int
+var target_score: int
+var slot_data: Array[int]
+var default_prob_array: Array[int] = [1, 1, 1, 1, 2, 2, 3]
+var player_prob_array: Array[int]
 
 # Handles initialization of player's bank values, target money goal, slot machine size and display array initialization
-func init_game_state(bank_amount: int, goal_amount: int, round: int):
-	bank = bank_amount
-	goal = goal_amount
+func init_game_state(round: int, target: int, score: int, money: int):
+	player_score = score
+	player_money = money
+	target_score = target
 	if round == 1:
 		player_prob_array = default_prob_array.duplicate()
