@@ -4,6 +4,7 @@ extends Control
 @onready var money_label = $PlayerMoney
 @onready var money_prompt = $MoneyPrompt
 @onready var bet_prompt = $BetPrompt
+@onready var spin_prompt = $SpinPrompt
 
 @onready var slot_displays = [
 	$TextureRect/SlotDisplay/Slot1,
@@ -13,34 +14,62 @@ extends Control
 	$TextureRect/SlotDisplay/Slot5
 ]
 
+@onready var slot_spin_displays = [
+	$TextureRect/SlotSpinDisplay/Spin,
+	$TextureRect/SlotSpinDisplay/Spin2,
+	$TextureRect/SlotSpinDisplay/Spin3,
+	$TextureRect/SlotSpinDisplay/Spin4,
+	$TextureRect/SlotSpinDisplay/Spin5
+]
+
+var is_spinning: bool = false
+
 signal spin_pressed
 
 func _ready():
 	money_label.text = "Money: " + str(Global.player_money)
 
 func _on_spin_button_pressed():
-	if Global.bet_money == 0: # Not enough bet
+	if is_spinning: # Display text for when still spinning
+		spin_prompt.visible = true
+		await get_tree().create_timer(2).timeout
+		spin_prompt.visible = false
+	elif Global.bet_money == 0: # Display text for not enough bet
 		bet_prompt.visible = true
 		await get_tree().create_timer(2).timeout
 		bet_prompt.visible = false
-	elif Global.player_money >= Global.bet_money:
-		# Resets symbol data array
-		Global.slot_data = []
-		# Loops through each texture rect
-		for slot in slot_displays:
-			# Picks random symbol from probability array
-			var chosen_symbol = Global.player_prob_array.pick_random()
-			# Sets texture of texture rect
-			slot.texture = Global.texture_array[chosen_symbol]
-			# Adds symbol to data array
-			Global.slot_data.append(chosen_symbol)
-	
+	elif !is_spinning and Global.player_money >= Global.bet_money: 
+		is_spinning = true
 		# Removes money from player when spining
 		Global.player_money -= Global.bet_money
 		money_update()
+		
+		for slot in len(slot_displays):
+			slot_spin_displays[slot].set_frame(randi_range(0, 21))
+			slot_spin_displays[slot].set_speed_scale(randf_range(0.75, 1.5))
+			slot_spin_displays[slot].visible = true
+			slot_displays[slot].visible = false
+		# Resets symbol data array
+		Global.slot_data = []
+		# Loops through each texture rect
+		for slot in len(slot_displays):
+			# Picks random symbol from probability array
+			var chosen_symbol = Global.player_prob_array.pick_random()
+			await get_tree().create_timer(1).timeout
+			if slot == 4:
+				await get_tree().create_timer(0.75).timeout
+			# Disables visibility of spinning slots
+			slot_spin_displays[slot].visible = false
+			# Sets texture of texture rect
+			slot_displays[slot].texture = Global.texture_array[chosen_symbol]
+			slot_displays[slot].visible = true
+			# Adds symbol to data array
+			Global.slot_data.append(chosen_symbol)
+		
+		is_spinning = false
 		# Emits signal connecting to main_scene.gd 
 		spin_pressed.emit()
-	else: # Not enough money
+	else: # Display text for not enough money
 		money_prompt.visible = true
 		await get_tree().create_timer(2).timeout
 		money_prompt.visible = false
