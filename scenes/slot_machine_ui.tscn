@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://pt4ljk687pwo"]
 
-[ext_resource type="Script" uid="uid://x5p8u6hl35wa" path="res://scripts/slot_machine.gd" id="1_x6tmx"]
+[ext_resource type="Script" uid="uid://x5p8u6hl35wa" path="res://Scripts/slot_machine.gd" id="1_x6tmx"]
 
 [node name="SlotMachineUI" type="Control"]
 layout_mode = 3
