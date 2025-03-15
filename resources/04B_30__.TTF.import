@@ -2,21 +2,21 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dylwb1kkg7w2q"
-path="res://.godot/imported/PressStart2P-Regular.ttf-f8c22d0876d26aa3bb5c5a4a64ba0f1e.fontdata"
+uid="uid://bcr5a16oks02i"
+path="res://.godot/imported/04B_30__.TTF-f8a1a64a9bd75969664c12c45496f865.fontdata"
 
 [deps]
 
-source_file="res://resources/PressStart2P-Regular.ttf"
-dest_files=["res://.godot/imported/PressStart2P-Regular.ttf-f8c22d0876d26aa3bb5c5a4a64ba0f1e.fontdata"]
+source_file="res://resources/04B_30__.TTF"
+dest_files=["res://.godot/imported/04B_30__.TTF-f8a1a64a9bd75969664c12c45496f865.fontdata"]
 
 [params]
 
 Rendering=null
 antialiasing=1
-generate_mipmaps=false
+generate_mipmaps=true
 disable_embedded_bitmaps=true
-multichannel_signed_distance_field=false
+multichannel_signed_distance_field=true
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
