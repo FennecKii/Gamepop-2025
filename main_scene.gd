@@ -53,3 +53,7 @@ func check_results():
 	Global.bank += score_to_add
 
 	update_score()
+
+
+func _on_slot_machine_spin_pressed():
+	check_results()
