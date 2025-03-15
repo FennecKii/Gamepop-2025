@@ -14,6 +14,10 @@ config/name="Gamepop 2025 Let's Go Gambling!"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Scripts/Global.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
