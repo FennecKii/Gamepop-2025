@@ -14,5 +14,14 @@ corner_radius_bottom_left = 3
 
 [resource]
 Button/colors/font_color = Color(0.0497504, 0.0332393, 0.0622611, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 9
+Button/font_sizes/font_size = 17
+Button/fonts/font = null
+Button/icons/icon = null
 Button/styles/hover = SubResource("StyleBoxFlat_moc63")
 Button/styles/normal = SubResource("StyleBoxFlat_54e5j")
