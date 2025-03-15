@@ -9,7 +9,7 @@ var goal: int
 var slot_display: Array[int] = []
 var slot_count: int = 5
 
-func initialize(bank_amount: int, goal_amount: int, slot_size: int):
+func init_game_state(bank_amount: int, goal_amount: int, slot_size: int):
 	bank = bank_amount
 	goal = goal_amount
 	slot_count = slot_size
