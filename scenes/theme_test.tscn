@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7t8w1v2e5joe"]
+[gd_scene load_steps=5 format=3 uid="uid://b7t8w1v2e5joe"]
 
 [ext_resource type="Theme" uid="uid://cuectxvsj0jcp" path="res://resources/button_theme.tres" id="1_h7ej2"]
+[ext_resource type="FontFile" uid="uid://dylwb1kkg7w2q" path="res://resources/PressStart2P-Regular.ttf" id="2_sj7kd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50uhq"]
 bg_color = Color(0.490196, 0.0705882, 1, 1)
@@ -14,6 +15,18 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sj7kd"]
+bg_color = Color(0.956863, 0.815686, 0.247059, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.917647, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -33,7 +46,9 @@ offset_bottom = 139.0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sj7kd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_50uhq")
+toggle_mode = true
 text = "+"
 
 [node name="Slot-machine" type="Sprite2D" parent="."]
@@ -48,6 +63,19 @@ offset_bottom = 112.0
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_sj7kd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_50uhq")
+toggle_mode = true
 text = "-
 "
+
+[node name="SpinButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 112.0
+offset_right = 264.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("2_sj7kd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sj7kd")
+toggle_mode = true
+text = "Spin!"
