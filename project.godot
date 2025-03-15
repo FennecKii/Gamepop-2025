@@ -18,13 +18,15 @@ Global="*res://Scripts/Global.gd"
 
 [autoload]
 
-Global="*res://Scripts/Global.gd"
+Global="*res://scripts/Global.gd"
 
 [display]
 
 window/size/mode=2
+window/stretch/mode="viewport"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
