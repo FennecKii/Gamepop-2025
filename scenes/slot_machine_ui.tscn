@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://pt4ljk687pwo"]
+
+[ext_resource type="Script" uid="uid://x5p8u6hl35wa" path="res://control.gd" id="1_x6tmx"]
+
+[node name="SlotMachineUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_x6tmx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 112.0
+offset_bottom = 78.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Slot1" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Slot2" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Slot3" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Slot4" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Slot5" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SpinButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
