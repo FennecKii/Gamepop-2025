@@ -12,7 +12,7 @@ signal spin_pressed
 
 func _on_spin_button_pressed():
 	# Resets symbol data array
-	Global.slot_display = []
+	Global.slot_data = []
 	# Loops through each texture rect
 	for slot in slot_displays:
 		# Picks random symbol from probability array
@@ -20,6 +20,6 @@ func _on_spin_button_pressed():
 		# Sets texture of texture rect
 		slot.texture = Global.texture_array[chosen_symbol]
 		# Adds symbol to data array
-		Global.slot_display.append(chosen_symbol)
+		Global.slot_data.append(chosen_symbol)
 	# Emits signal connects to main_scene.gd 
 	spin_pressed.emit()
