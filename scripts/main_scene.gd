@@ -16,7 +16,7 @@ var initial_money: int
 
 func _ready():
 	# Initialize game state
-	Global.init_game_state(round_num, initial_target, 0, 20)
+	Global.init_game_state(round_num, initial_target, 0, Global.player_money)
 	update_score()
 	update_labels()
 
@@ -28,7 +28,7 @@ func check_results():
 		counts[num] = counts.get(num, 0) + 1
 
 	# Apply scoring rules
-	var score_to_add = 0
+	var score_to_add = Global.bet_money
 	var multiplier = 1
 
 	for num in counts.keys():
@@ -57,11 +57,14 @@ func check_results():
 			update_score()
 			return  # Skip other calculations if 5 of a kind is met
 
+# Add cherry points
+	Global.player_score += score_to_add
 	# Apply multiplier (Bananas and 7s)
 	Global.player_score *= multiplier
 
-	# Add cherry points
-	Global.player_score += score_to_add
+	print(counts)
+	print(score_to_add)
+	print(multiplier)
 	update_score()
 	update_labels()
 

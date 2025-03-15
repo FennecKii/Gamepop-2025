@@ -19,8 +19,9 @@ enum IconID {BLANK, CHERRY, BANANA, SEVEN, KIWI, WATERMELON, TOMATO, AVOCADO, PI
 const max_rounds: int = 5
 const max_spins: int = 5
 
+var bet_money: int
 var player_score: int
-var player_money: int
+var player_money = 100
 var target_score: int
 var slot_data: Array[int]
 var default_prob_array: Array[int] = [1, 1, 1, 1, 2, 2, 3]
