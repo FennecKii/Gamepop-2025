@@ -11,9 +11,15 @@ extends Control
 signal spin_pressed
 
 func _on_spin_button_pressed():
+	# Resets symbol data array
 	Global.slot_display = []
+	# Loops through each texture rect
 	for slot in slot_displays:
-		var chosen_symbol = randi_range(1, 3) #len(Global.SymbolID) - 1)
+		# Picks random symbol from probability array
+		var chosen_symbol = Global.player_prob_array.pick_random()
+		# Sets texture of texture rect
 		slot.texture = Global.texture_array[chosen_symbol]
+		# Adds symbol to data array
 		Global.slot_display.append(chosen_symbol)
+	# Emits signal connects to main_scene.gd 
 	spin_pressed.emit()

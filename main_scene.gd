@@ -1,11 +1,29 @@
 extends Control
 
 @onready var score_label = $ScoreLabel
+@onready var goal_label = $GoalLabel
+@onready var win_panel = $WinPanel
+@onready var lose_panel = $LosePanel
+@onready var rounds_label = $Round
+@onready var spins_label = $Spins
 @onready var slot_machine = $SlotMachineUI
 
+var round_num: int = 1
+var spin_num: int = 0
+var current_goal: int
+
 func _ready():
+	# Initialize game state
+	Global.init_game_state(0, 10000, round_num)
+	current_goal = 10000
 	update_score()
-	
+	goal_label.text = "Goal: " + str(Global.goal)
+	rounds_label.text = "Round: " + str(round_num)
+	spins_label.text = "Spins Left: " + str(Global.max_spins - spin_num)
+
+func _process(delta):
+	pass
+
 func update_score():
 	score_label.text = "Score: " + str(Global.bank)
 
@@ -53,7 +71,36 @@ func check_results():
 	Global.bank += score_to_add
 
 	update_score()
+	win_check()
 
+func win_check():
+	if Global.bank >= Global.goal: # Win condition
+		spin_num = 5
+		round_num += 1
+		win_panel.visible = true
+	
+	elif spin_num == Global.max_spins and  Global.bank < Global.goal: # Lose condition
+		spin_num = 0
+		round_num = 1
+		lose_panel.visible = true
 
 func _on_slot_machine_spin_pressed():
-	check_results()
+	spin_num += 1
+	if spin_num <= 5:
+		update_labels()
+		check_results()
+
+func update_labels():
+	rounds_label.text = "Round: " + str(round_num)
+	spins_label.text = "Spins Left: " + str(Global.max_spins - spin_num)
+	goal_label.text = "Goal: " + str(current_goal)
+
+func _on_shop_pressed():
+	win_panel.visible = false
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_play_again_pressed():
+	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
+
+func _on_quit_pressed():
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
