@@ -63,7 +63,7 @@ offset_bottom = 217.0
 text = "Spins
 "
 
-[node name="WinPanel" type="ColorRect" parent="."]
+[node name="WinRoundPanel" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
 offset_right = 1152.0
@@ -71,7 +71,7 @@ offset_bottom = 648.0
 color = Color(0.266667, 0.6, 0.921569, 0.603922)
 metadata/_edit_group_ = true
 
-[node name="You Won" type="Label" parent="WinPanel"]
+[node name="Round Won" type="Label" parent="WinRoundPanel"]
 layout_mode = 0
 offset_left = 536.0
 offset_top = 240.0
@@ -79,7 +79,7 @@ offset_right = 619.0
 offset_bottom = 263.0
 text = "You Won :)"
 
-[node name="Shop" type="Button" parent="WinPanel"]
+[node name="Shop" type="Button" parent="WinRoundPanel"]
 layout_mode = 0
 offset_left = 536.0
 offset_top = 336.0
@@ -119,7 +119,38 @@ offset_right = 624.0
 offset_bottom = 383.0
 text = "Main Menu"
 
+[node name="WinPanel" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.933333, 0.580392, 0.694118, 0.470588)
+metadata/_edit_group_ = true
+
+[node name="You Won" type="Label" parent="WinPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Play Again" type="Button" parent="WinPanel"]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 304.0
+offset_right = 621.0
+offset_bottom = 335.0
+text = "Play Again!"
+
+[node name="Quit" type="Button" parent="WinPanel"]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 352.0
+offset_right = 624.0
+offset_bottom = 383.0
+text = "Main Menu"
+
 [connection signal="spin_pressed" from="SlotMachineUI" to="." method="_on_slot_machine_spin_pressed"]
-[connection signal="pressed" from="WinPanel/Shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="WinRoundPanel/Shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="LosePanel/Play Again" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="LosePanel/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="WinPanel/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="WinPanel/Quit" to="." method="_on_quit_pressed"]
