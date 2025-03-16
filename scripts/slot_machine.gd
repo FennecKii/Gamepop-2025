@@ -5,6 +5,9 @@ extends Control
 @onready var money_prompt = $MoneyPrompt
 @onready var bet_prompt = $BetPrompt
 @onready var spin_prompt = $SpinPrompt
+@onready var lever = $Button
+@onready var lever_pull = $Button/AnimatedSprite2D
+
 
 @onready var slot_displays = [
 	$TextureRect/SlotDisplay/Slot1,
@@ -23,13 +26,37 @@ extends Control
 ]
 
 var is_spinning: bool = false
+var animation_playing: bool = false
 
 signal spin_pressed
 
 func _ready():
 	money_label.text = "Money: " + str(Global.player_money)
 
-func _on_spin_button_pressed():
+func money_update():
+	money_label.text = "Money: " + str(Global.player_money)
+	bet_label.text = "Bet: " + str(Global.bet_money)
+
+func _on_minus_button_pressed():
+	if Global.bet_money >= 10:
+		Global.bet_money -= 10
+		money_update()
+
+func _on_plus_button_pressed():
+	if Global.player_money >= 10:
+		Global.bet_money += 10
+		money_update()
+
+func _on_button_pressed():
+	if animation_playing:  # Prevent spamming the button while the animation is playing
+		return
+	animation_playing = true  # Set the flag to prevent spamming
+
+	lever_pull.play("pull")
+	await lever_pull.animation_finished
+
+	animation_playing = false  # Reset the flag to allow clicking again
+		
 	if is_spinning: # Display text for when still spinning
 		spin_prompt.visible = true
 		await get_tree().create_timer(2).timeout
@@ -73,17 +100,3 @@ func _on_spin_button_pressed():
 		money_prompt.visible = true
 		await get_tree().create_timer(2).timeout
 		money_prompt.visible = false
-
-func money_update():
-	money_label.text = "Money: " + str(Global.player_money)
-	bet_label.text = "Bet: " + str(Global.bet_money)
-
-func _on_minus_button_pressed():
-	if Global.bet_money >= 10:
-		Global.bet_money -= 10
-		money_update()
-
-func _on_plus_button_pressed():
-	if Global.player_money >= 10:
-		Global.bet_money += 10
-		money_update()
