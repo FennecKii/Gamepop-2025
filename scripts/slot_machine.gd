@@ -40,36 +40,32 @@ func money_update():
 func _on_minus_button_pressed():
 	if Global.bet_money >= 10:
 		Global.bet_money -= 10
-    AudioPlayer.play_sfx(Global.subtract_money)
+		AudioPlayer.play_sfx(Global.subtract_money)
 		money_update()
 
 func _on_plus_button_pressed():
 	if Global.player_money >= 10:
 		Global.bet_money += 10
-    AudioPlayer.play_sfx(Global.add_money)
+		AudioPlayer.play_sfx(Global.add_money)
 		money_update()
 
 func _on_button_pressed():
-	if animation_playing:  # Prevent spamming the button while the animation is playing
-		return
-	animation_playing = true  # Set the flag to prevent spamming
-
-	lever_pull.play("pull")
-	await lever_pull.animation_finished
-
-	animation_playing = false  # Reset the flag to allow clicking again
-		
 	if is_spinning: # Display text for when still spinning
+		AudioPlayer.play_sfx(Global.negative_feedback)
 		spin_prompt.visible = true
 		await get_tree().create_timer(2).timeout
 		spin_prompt.visible = false
 	elif Global.bet_money == 0: # Display text for not enough bet
+		AudioPlayer.play_sfx(Global.negative_feedback)
 		bet_prompt.visible = true
 		await get_tree().create_timer(2).timeout
 		bet_prompt.visible = false
 	elif !is_spinning and Global.player_money >= Global.bet_money: 
 		is_spinning = true
 		AudioPlayer.play_sfx(Global.lever)
+		# Plays lever animation
+		lever_pull.play("pull")
+		await lever_pull.animation_finished
 		# Removes money from player when spining
 		Global.player_money -= Global.bet_money
 		money_update()
@@ -101,6 +97,7 @@ func _on_button_pressed():
 		# Emits signal connecting to main_scene.gd 
 		spin_pressed.emit()
 	else: # Display text for not enough money
+		AudioPlayer.play_sfx(Global.negative_feedback)
 		money_prompt.visible = true
 		await get_tree().create_timer(2).timeout
 		money_prompt.visible = false

@@ -45,6 +45,7 @@ var player_prob_array: Array[int]
 @onready var round_win_sound = preload("res://audio/Jingle Win 002.wav")
 @onready var game_win_sound = preload("res://audio/Jingle Win 001.wav")
 @onready var game_lose_sound = preload("res://audio/Jingle Lose 001.wav")
+@onready var negative_feedback = preload("res://audio/Gain B 16-Bit.wav")
 
 # Handles initialization of player's bank values, target money goal, slot machine size and display array initialization
 func init_game_state(round: int, target: int, score: int, money: int):
