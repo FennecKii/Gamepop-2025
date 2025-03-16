@@ -199,8 +199,10 @@ func _on_slot_machine_spin_pressed():
 		if is_jackpot == true:
 			await get_tree().create_timer(8.5).timeout
 			win_check()
+			is_jackpot = false
 		else:
 			win_check()
+
 
 func update_score():
 	score_label.text = str(Global.player_score)
@@ -268,11 +270,11 @@ func calc_reward() -> int:
 	elif Global.current_round == 2:
 		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*0.5
 	elif Global.current_round == 3:
-		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*1
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*0.55
 	elif Global.current_round == 4:
-		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*1.25
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*0.6
 	elif Global.current_round == 5:
-		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*1.50
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*0.7
 		
 	print(base_reward)
 	print(reward_multiplier)
