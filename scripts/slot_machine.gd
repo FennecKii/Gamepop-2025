@@ -104,16 +104,16 @@ func _on_button_pressed():
 		await get_tree().create_timer(2).timeout
 		money_prompt.visible = false
 
-func filter_audio(position: int, volume: float = 0.0):
-	if position == 0:
+func filter_audio(slot_position: int, volume: float = 0.0):
+	if slot_position == 0:
 		AudioPlayer.play_sfx(Global.coin7_click, volume)
-	elif position == 1:
+	elif slot_position == 1:
 		AudioPlayer.play_sfx(Global.coin2_click, volume)
-	elif position == 2:
+	elif slot_position == 2:
 		AudioPlayer.play_sfx(Global.coin1_click, volume)
-	elif position == 3:
+	elif slot_position == 3:
 		AudioPlayer.play_sfx(Global.coin3_click, volume)
-	elif position == 4:
+	elif slot_position == 4:
 		AudioPlayer.play_sfx(Global.coin5_click, volume)
 
 func _on_shop_next_round_pressed(): # Signal

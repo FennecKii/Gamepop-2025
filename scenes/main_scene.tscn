@@ -609,6 +609,7 @@ text = "Money:"
 metadata/_edit_group_ = true
 
 [node name="WinRoundPanel" type="TextureRect" parent="."]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_right = 40.0

@@ -51,7 +51,7 @@ func check_results():
 		counts[num] = counts.get(num, 0) + 1
 
 	# Apply scoring rules
-	var score_to_add = 0
+	# var score_to_add = 0
 	var multiplier = 0
 	var win_this_spin = false
 	var streak = 1
@@ -240,16 +240,16 @@ func _on_shop_next_round_pressed():
 		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
 
-func set_target_score(round: int):
-	if round == 1:
+func set_target_score(round_num: int):
+	if round_num == 1:
 		Global.target_score = initial_target
-	if round == 2:
+	if round_num == 2:
 		Global.target_score = 620
-	if round == 3:
+	if round_num == 3:
 		Global.target_score = 2400
-	if round == 4:
+	if round_num == 4:
 		Global.target_score = 6300
-	if round == 5:
+	if round_num == 5:
 		Global.target_score = 10000
 
 func calc_reward() -> int:

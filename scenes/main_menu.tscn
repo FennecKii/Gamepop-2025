@@ -205,7 +205,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wu84c")
 text = "Quit"
 
 [node name="SettingsPanel" type="ColorRect" parent="."]
-visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(1, 1, 1, 0)
@@ -291,6 +290,7 @@ step = 0.05
 value = 1.0
 
 [node name="Close" type="Button" parent="SettingsPanel/Panel"]
+layout_mode = 0
 offset_left = 232.0
 offset_top = 392.0
 offset_right = 312.0

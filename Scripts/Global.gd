@@ -65,10 +65,10 @@ var base_reward: int = 50
 ]
 
 # Handles initialization of player's bank values, target money goal, slot machine size and display array initialization
-func init_game_state(round: int, target: int, score: int, money: int):
+func init_game_state(round_num: int, target: int, score: int, money: int):
 	player_score = score
 	player_money = money
 	target_score = target
-	current_round = round
-	if round == 1:
+	current_round = round_num
+	if round_num == 1:
 		player_prob_array = default_prob_array.duplicate()
