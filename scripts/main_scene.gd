@@ -22,11 +22,10 @@ extends Control
 @onready var win_panel_score_label = $WinPanel/ScoreWinLabel
 @onready var win_panel_money_label = $WinPanel/MoneyWinLabel
 
-
-var spin_num: int = 0
-var initial_target: int = 300
-var initial_money: int = 100
-var streak_counter = 0
+@onready var initial_target: int = 300
+@onready var initial_money: int = 100
+@onready var spin_num: int = 0
+@onready var streak_counter = 0
 
 var legend_visible: bool = false
 var target_position = Vector2(500,0)
@@ -38,6 +37,7 @@ func _ready():
 	lose_panel.visible = false
 	win_panel.visible = false
 	# Initialize game state
+	Global.max_spins = 5
 	Global.init_game_state(1, initial_target, 0, initial_money)
 	update_score()
 	update_labels()

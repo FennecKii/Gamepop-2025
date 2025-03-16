@@ -17,9 +17,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="SettingsPanel" type="ColorRect"]
-visible = false
 z_index = 1
-y_sort_enabled = true
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(1, 1, 1, 0)
@@ -163,6 +161,7 @@ text = "Close"
 [node name="MainMenu" type="Button" parent="Panel"]
 z_index = 1
 y_sort_enabled = true
+layout_mode = 0
 offset_left = 128.0
 offset_top = 392.0
 offset_right = 253.0

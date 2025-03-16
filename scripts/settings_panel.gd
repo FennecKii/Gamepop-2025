@@ -41,6 +41,7 @@ func _on_close_pressed():
 
 func _on_main_menu_pressed():
 	AudioPlayer.play_sfx(Global.button_click, 5)
+	AudioPlayer._play_music(Global.menu_music, 0.0)
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_button_entered():

@@ -38,20 +38,32 @@ func money_update():
 	bet_label.text = "Bet: " + str(Global.bet_money)
 
 func _on_minus_button_pressed():
-	if Global.bet_money >= 10:
-		Global.bet_money -= 10
-		AudioPlayer.play_sfx(Global.subtract_money)
-		money_update()
+	if !is_spinning:
+		if Global.bet_money >= 10:
+			Global.bet_money -= 10
+			AudioPlayer.play_sfx(Global.subtract_money)
+			money_update()
+		else:
+			AudioPlayer.play_sfx(Global.negative_feedback, 1)
 	else:
 		AudioPlayer.play_sfx(Global.negative_feedback, 1)
+		spin_prompt.visible = true
+		await get_tree().create_timer(2).timeout
+		spin_prompt.visible = false
 
 func _on_plus_button_pressed():
-	if Global.player_money >= 10:
-		Global.bet_money += 10
-		AudioPlayer.play_sfx(Global.add_money)
-		money_update()
-	if Global.player_money < 10:
-		bet_label.text = "All In"
+	if !is_spinning:
+		if Global.player_money >= 10:
+			Global.bet_money += 10
+			AudioPlayer.play_sfx(Global.add_money)
+			money_update()
+		if Global.player_money < 10:
+			bet_label.text = "All In"
+	else:
+		AudioPlayer.play_sfx(Global.negative_feedback, 1)
+		spin_prompt.visible = true
+		await get_tree().create_timer(2).timeout
+		spin_prompt.visible = false
 
 func _on_button_pressed():
 	if is_spinning: # Display text for when still spinning

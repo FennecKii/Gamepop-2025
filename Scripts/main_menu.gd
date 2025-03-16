@@ -12,6 +12,9 @@ func _ready():
 
 func _on_play_pressed():
 	AudioPlayer.play_sfx(Global.mystic_click, 5)
+	Global.max_spins = 5
+	Global.bet_money = 0
+	Global.init_game_state(1, 300, 0, 100)
 	AudioPlayer._play_music(Global.music_array.pick_random(), -6)
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 
