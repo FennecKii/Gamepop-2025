@@ -1,11 +1,12 @@
 [gd_scene load_steps=56 format=3 uid="uid://pt4ljk687pwo"]
 
-[ext_resource type="Script" uid="uid://x5p8u6hl35wa" path="res://Scripts/slot_machine.gd" id="1_x6tmx"]
+[ext_resource type="Script" uid="uid://x5p8u6hl35wa" path="res://scripts/slot_machine.gd" id="1_x6tmx"]
 [ext_resource type="Texture2D" uid="uid://ckp53kewda5th" path="res://assets/Slot-Machine2.0.png" id="2_5ams1"]
 [ext_resource type="Texture2D" uid="uid://bbmeyvmt3c1l3" path="res://assets/Cherry.png" id="2_icp5i"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="3_s6ofq"]
 [ext_resource type="FontFile" uid="uid://dq578jcivuufm" path="res://resources/whitrabt.ttf" id="5_gywak"]
 [ext_resource type="Texture2D" uid="uid://xqoj5yafls3l" path="res://assets/spinning.png" id="5_o17uc"]
+[ext_resource type="AudioStream" uid="uid://brttyrw7abcqx" path="res://audio/mixkit-slot-machine-wheel-1932.wav" id="7_2mcyw"]
 [ext_resource type="Texture2D" uid="uid://df562p6miarf4" path="res://assets/lever-anim.png" id="7_gywak"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kbcy"]
@@ -544,6 +545,11 @@ z_index = 1
 position = Vector2(-86, 22)
 sprite_frames = SubResource("SpriteFrames_eie3u")
 animation = &"pull"
+
+[node name="SpinAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_2mcyw")
+volume_db = -12.0
+bus = &"SFX"
 
 [connection signal="pressed" from="TextureRect/Plus Button" to="." method="_on_plus_button_pressed"]
 [connection signal="pressed" from="TextureRect/Minus Button" to="." method="_on_minus_button_pressed"]

@@ -1,5 +1,12 @@
 extends AudioStreamPlayer2D
 
+func _play_music(music: AudioStream, volume: float = 0.0):
+	if stream == music:
+		return
+	stream = music
+	volume_db = volume
+	play()
+
 func play_sfx(stream: AudioStream, volume: float = 0.0):
 	var sfx_player = AudioStreamPlayer2D.new()
 	sfx_player.stream = stream

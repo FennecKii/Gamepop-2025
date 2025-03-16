@@ -7,7 +7,7 @@ extends Control
 @onready var spin_prompt = $SpinPrompt
 @onready var lever = $Button
 @onready var lever_pull = $Button/AnimatedSprite2D
-
+@onready var spin_audio = $SpinAudio
 
 @onready var slot_displays = [
 	$TextureRect/SlotDisplay/Slot1,
@@ -62,7 +62,7 @@ func _on_button_pressed():
 		bet_prompt.visible = false
 	elif !is_spinning and Global.player_money >= Global.bet_money: 
 		is_spinning = true
-		AudioPlayer.play_sfx(Global.lever)
+		AudioPlayer.play_sfx(Global.lever, 1.0)
 		# Plays lever animation
 		lever_pull.play("pull")
 		await lever_pull.animation_finished
@@ -81,12 +81,14 @@ func _on_button_pressed():
 		for slot in len(slot_displays):
 			# Picks random symbol from probability array
 			var chosen_symbol = Global.player_prob_array.pick_random()
-			await get_tree().create_timer(1).timeout
+			spin_audio.play()
+			await get_tree().create_timer(1.25).timeout
 			if slot == 4:
 				await get_tree().create_timer(0.75).timeout
+			spin_audio.stop()
 			# Disables visibility of spinning slots
 			slot_spin_displays[slot].visible = false
-			filter_audio(slot)
+			filter_audio(slot, 5)
 			# Sets texture of texture rect
 			slot_displays[slot].texture = Global.texture_array[chosen_symbol]
 			slot_displays[slot].visible = true
@@ -102,14 +104,14 @@ func _on_button_pressed():
 		await get_tree().create_timer(2).timeout
 		money_prompt.visible = false
 
-func filter_audio(position: int):
+func filter_audio(position: int, volume: float = 0.0):
 	if position == 0:
-		AudioPlayer.play_sfx(Global.coin7_click)
+		AudioPlayer.play_sfx(Global.coin7_click, volume)
 	elif position == 1:
-		AudioPlayer.play_sfx(Global.coin2_click)
+		AudioPlayer.play_sfx(Global.coin2_click, volume)
 	elif position == 2:
-		AudioPlayer.play_sfx(Global.coin1_click)
+		AudioPlayer.play_sfx(Global.coin1_click, volume)
 	elif position == 3:
-		AudioPlayer.play_sfx(Global.coin3_click)
+		AudioPlayer.play_sfx(Global.coin3_click, volume)
 	elif position == 4:
-		AudioPlayer.play_sfx(Global.coin5_click)
+		AudioPlayer.play_sfx(Global.coin5_click, volume)
