@@ -1,6 +1,6 @@
 [gd_scene load_steps=62 format=3 uid="uid://dyesgrb31hily"]
 
-[ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://Scripts/main_scene.gd" id="1_pw63i"]
+[ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://pt4ljk687pwo" path="res://scenes/slot_machine_ui.tscn" id="2_7ykc4"]
 [ext_resource type="Texture2D" uid="uid://dq54kc6kfqnbc" path="res://assets/Background2.0.png" id="2_pu3yx"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="4_pu3yx"]
