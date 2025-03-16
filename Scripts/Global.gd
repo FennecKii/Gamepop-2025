@@ -29,9 +29,9 @@ var player_prob_array: Array[int]
 var base_reward: int = 100
 
 # Audio preloads
-@onready var button_click = preload("res://audio/Funk Click A.wav")
-@onready var button_hover = preload("res://audio/Funk Click B.wav")
-@onready var mystic_click = preload("res://audio/Mystic Click A.wav")
+@onready var button_click = preload("res://audio/Mystic Click B.wav")
+@onready var button_hover = preload("res://audio/Funk Click A.wav")
+@onready var mystic_click = preload("res://audio/Mystic Select A.wav")
 @onready var coin1_click = preload("res://audio/Coin 001.wav")
 @onready var coin2_click = preload("res://audio/Coin 002.wav")
 @onready var coin3_click = preload("res://audio/Coin 003.wav")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://hven3f66wiuo"]
 
-[ext_resource type="Script" uid="uid://8ghqmsio2ycc" path="res://Scripts/shop.gd" id="1_1l46r"]
+[ext_resource type="Script" uid="uid://8ghqmsio2ycc" path="res://scripts/shop.gd" id="1_1l46r"]
 [ext_resource type="Texture2D" uid="uid://bppypeup573ga" path="res://assets/Laptop2.0.png" id="1_lx5au"]
 [ext_resource type="FontFile" uid="uid://dq578jcivuufm" path="res://resources/whitrabt.ttf" id="2_xfvoa"]
 
@@ -203,7 +203,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
 action_mode = 0
 text = "Buy"
 
+[connection signal="mouse_entered" from="NextRoundButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="NextRoundButton" to="." method="_on_next_round"]
+[connection signal="mouse_entered" from="ExtraSpinBuyButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ExtraSpinBuyButton" to="." method="_on_extra_spin_buy"]
+[connection signal="mouse_entered" from="ChangeProbBuyButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="ChangeProbBuyButton" to="." method="_on_change_prob_buy"]
+[connection signal="mouse_entered" from="PayoutIncreaseBuyButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="PayoutIncreaseBuyButton" to="." method="_on_payout_increase"]

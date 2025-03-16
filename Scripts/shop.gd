@@ -85,3 +85,6 @@ func set_shop_prices():
 		extra_spin_cost = 30
 		algo_override_cost = 40
 		payout_increase_cost = 25
+
+func _on_button_mouse_entered():
+	AudioPlayer.play_sfx(Global.button_hover)

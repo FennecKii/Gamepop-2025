@@ -125,3 +125,6 @@ func _on_play_again_pressed(): # Signal
 
 func _on_quit_pressed(): # Signal
 	Global.bet_money = 0
+
+func _on_button_mouse_entered():
+	AudioPlayer.play_sfx(Global.button_hover)
