@@ -114,9 +114,12 @@ func _on_shop_pressed():
 	update_labels()
 	AudioPlayer.play_sfx(Global.coin4_click)
 	win_round_panel.visible = false
+	get_tree().change_scene_to_file("res://scenes/shop.tscn")
 
 func _on_play_again_pressed():
 	AudioPlayer.play_sfx(Global.mystic_click)
+	Global.player_money = 100 
+	Global.init_game_state(1, initial_target, 0, Global.player_money)
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 
 func _on_quit_pressed():

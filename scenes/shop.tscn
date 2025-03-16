@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq1f0ki6curk5"]
+
+[ext_resource type="Texture2D" uid="uid://cpfcfmhhsnl88" path="res://assets/laptop.png" id="1_lx5au"]
+
+[node name="Shop" type="Node2D"]
+
+[node name="Laptop" type="Sprite2D" parent="."]
+position = Vector2(636.5, 359)
+scale = Vector2(1.24316, 1.09877)
+texture = ExtResource("1_lx5au")

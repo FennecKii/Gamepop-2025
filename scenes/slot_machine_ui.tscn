@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://pt4ljk687pwo"]
+[gd_scene load_steps=51 format=3 uid="uid://pt4ljk687pwo"]
 
 [ext_resource type="Script" uid="uid://x5p8u6hl35wa" path="res://scripts/slot_machine.gd" id="1_x6tmx"]
 [ext_resource type="Texture2D" uid="uid://ckp53kewda5th" path="res://assets/Slot-Machine2.0.png" id="2_5ams1"]
 [ext_resource type="Texture2D" uid="uid://bbmeyvmt3c1l3" path="res://assets/Cherry.png" id="2_icp5i"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="3_s6ofq"]
 [ext_resource type="Texture2D" uid="uid://xqoj5yafls3l" path="res://assets/spinning.png" id="5_o17uc"]
+[ext_resource type="Texture2D" uid="uid://df562p6miarf4" path="res://assets/lever-anim.png" id="7_gywak"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kbcy"]
 atlas = ExtResource("5_o17uc")
@@ -206,6 +207,109 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qr1dm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j84i8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j84i8"]
+bg_color = Color(1, 1, 1, 0.243137)
+border_color = Color(0.811069, 0.348382, 0.741794, 0.427451)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mcyw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1kbcy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gywak"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eltfn"]
+atlas = ExtResource("7_gywak")
+region = Rect2(0, 0, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37h1b"]
+atlas = ExtResource("7_gywak")
+region = Rect2(320, 0, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oervx"]
+atlas = ExtResource("7_gywak")
+region = Rect2(640, 0, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x01xb"]
+atlas = ExtResource("7_gywak")
+region = Rect2(960, 0, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct7v4"]
+atlas = ExtResource("7_gywak")
+region = Rect2(1280, 0, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3qiq"]
+atlas = ExtResource("7_gywak")
+region = Rect2(1600, 0, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd282"]
+atlas = ExtResource("7_gywak")
+region = Rect2(1920, 0, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh5sf"]
+atlas = ExtResource("7_gywak")
+region = Rect2(2240, 0, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61cpd"]
+atlas = ExtResource("7_gywak")
+region = Rect2(2560, 0, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhlnn"]
+atlas = ExtResource("7_gywak")
+region = Rect2(2880, 0, 320, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq5ul"]
+atlas = ExtResource("7_gywak")
+region = Rect2(3200, 0, 320, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eie3u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eltfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37h1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oervx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x01xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct7v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3qiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd282")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh5sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61cpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhlnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq5ul")
+}],
+"loop": false,
+"name": &"pull",
+"speed": 14.0
+}]
+
 [node name="SlotMachineUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -351,10 +455,11 @@ text = "-
 "
 
 [node name="SpinButton" type="Button" parent="TextureRect"]
+visible = false
 layout_mode = 0
-offset_left = 174.0
+offset_left = 176.0
 offset_top = 161.0
-offset_right = 240.0
+offset_right = 241.0
 offset_bottom = 190.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_s6ofq")
@@ -365,10 +470,10 @@ text = "Spin!"
 
 [node name="PlayerBet" type="Label" parent="."]
 layout_mode = 0
-offset_left = 331.0
-offset_top = 267.0
-offset_right = 408.0
-offset_bottom = 290.0
+offset_left = 337.0
+offset_top = 243.0
+offset_right = 435.0
+offset_bottom = 266.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("3_s6ofq")
 text = "Bet: 0"
@@ -421,6 +526,27 @@ theme_override_fonts/font = ExtResource("3_s6ofq")
 theme_override_font_sizes/font_size = 0
 text = "Still spinning!"
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 168.0
+offset_right = 500.0
+offset_bottom = 288.0
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qr1dm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_j84i8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j84i8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2mcyw")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_1kbcy")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gywak")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Button"]
+z_index = 1
+position = Vector2(-86, 22)
+sprite_frames = SubResource("SpriteFrames_eie3u")
+animation = &"pull"
+
 [connection signal="pressed" from="TextureRect/Plus Button" to="." method="_on_plus_button_pressed"]
 [connection signal="pressed" from="TextureRect/Minus Button" to="." method="_on_minus_button_pressed"]
 [connection signal="pressed" from="TextureRect/SpinButton" to="." method="_on_spin_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
