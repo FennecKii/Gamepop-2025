@@ -1,6 +1,6 @@
-[gd_scene load_steps=42 format=3 uid="uid://dyesgrb31hily"]
+[gd_scene load_steps=43 format=3 uid="uid://dyesgrb31hily"]
 
-[ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://scripts/main_scene.gd" id="1_pw63i"]
+[ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://Scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://pt4ljk687pwo" path="res://scenes/slot_machine_ui.tscn" id="2_7ykc4"]
 [ext_resource type="Texture2D" uid="uid://dq54kc6kfqnbc" path="res://assets/Background2.0.png" id="2_pu3yx"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="4_pu3yx"]
@@ -69,6 +69,19 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_size = 6
 shadow_offset = Vector2(1.565, 4.465)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mngbo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.568973, 0.568973, 0.568972, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4w45t"]
 atlas = ExtResource("12_mngbo")
@@ -554,6 +567,12 @@ offset_left = 49.0
 offset_top = 643.0
 offset_right = 166.0
 offset_bottom = 694.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_pu3yx")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_mngbo")
 text = "Legend"
 
 [node name="Legend" type="TextureRect" parent="."]
