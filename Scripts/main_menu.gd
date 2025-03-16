@@ -1,4 +1,8 @@
 extends Node2D
+@onready var background = $Background2/AnimatedSprite2D
+
+func _ready():
+	background.play("default")
 
 func _on_play_pressed():
 	AudioPlayer.play_sfx(Global.mystic_click)
