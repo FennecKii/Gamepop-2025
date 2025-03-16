@@ -176,10 +176,10 @@ texture = ExtResource("5_c16ls")
 
 [node name="ColorRect" type="ColorRect" parent="WinPanel"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = -8.0
-offset_right = 1296.0
-offset_bottom = 712.0
+offset_left = -13.0
+offset_top = -5.0
+offset_right = 1267.0
+offset_bottom = 715.0
 color = Color(1, 1, 1, 0)
 
 [node name="Play Again" type="Button" parent="WinPanel"]
@@ -211,6 +211,33 @@ theme_override_styles/normal_mirrored = ExtResource("6_e1cbu")
 theme_override_styles/normal = ExtResource("6_e1cbu")
 text = "Main Menu"
 
+[node name="ScoreWinLabel" type="Label" parent="WinPanel"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 248.0
+offset_right = 821.0
+offset_bottom = 279.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("4_pu3yx")
+theme_override_font_sizes/font_size = 24
+text = "Score:"
+metadata/_edit_group_ = true
+
+[node name="MoneyWinLabel" type="Label" parent="WinPanel"]
+layout_mode = 0
+offset_left = 701.0
+offset_top = 296.0
+offset_right = 824.0
+offset_bottom = 327.0
+theme_override_colors/font_color = Color(0.0823529, 0.827451, 0.345098, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("4_pu3yx")
+theme_override_font_sizes/font_size = 24
+text = "Money:"
+metadata/_edit_group_ = true
+
 [node name="LosePanel" type="TextureRect" parent="."]
 visible = false
 z_index = 1
@@ -223,10 +250,10 @@ texture = ExtResource("6_18nlu")
 
 [node name="ColorRect" type="ColorRect" parent="LosePanel"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = -8.0
-offset_right = 1296.0
-offset_bottom = 712.0
+offset_left = 22.0
+offset_top = -29.0
+offset_right = 1302.0
+offset_bottom = 691.0
 color = Color(1, 1, 1, 0)
 
 [node name="Play Again" type="Button" parent="LosePanel"]
@@ -251,8 +278,34 @@ theme_override_font_sizes/font_size = 19
 theme_override_styles/normal = ExtResource("8_mngbo")
 text = "Main Menu"
 
+[node name="ScoreLossLabel" type="Label" parent="LosePanel"]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 240.0
+offset_right = 858.0
+offset_bottom = 271.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("4_pu3yx")
+theme_override_font_sizes/font_size = 24
+text = "Score:"
+metadata/_edit_group_ = true
+
+[node name="MoneyLossLabel" type="Label" parent="LosePanel"]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 288.0
+offset_right = 861.0
+offset_bottom = 319.0
+theme_override_colors/font_color = Color(0.0823529, 0.827451, 0.345098, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("4_pu3yx")
+theme_override_font_sizes/font_size = 24
+text = "Money:"
+metadata/_edit_group_ = true
+
 [node name="WinRoundPanel" type="TextureRect" parent="."]
-visible = false
 z_index = 1
 layout_mode = 0
 offset_right = 40.0
@@ -295,6 +348,33 @@ theme_override_fonts/font = ExtResource("4_pu3yx")
 theme_override_font_sizes/font_size = 19
 theme_override_styles/normal = SubResource("StyleBoxFlat_si52b")
 text = "Main Menu"
+
+[node name="ScoreWinRoundLabel" type="Label" parent="WinRoundPanel"]
+layout_mode = 0
+offset_left = 351.0
+offset_top = 604.0
+offset_right = 472.0
+offset_bottom = 635.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("4_pu3yx")
+theme_override_font_sizes/font_size = 24
+text = "Score:"
+metadata/_edit_group_ = true
+
+[node name="MoneyWinRoundLabel" type="Label" parent="WinRoundPanel"]
+layout_mode = 0
+offset_left = 722.0
+offset_top = 601.0
+offset_right = 845.0
+offset_bottom = 632.0
+theme_override_colors/font_color = Color(0.0823529, 0.827451, 0.345098, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("4_pu3yx")
+theme_override_font_sizes/font_size = 24
+text = "Money:"
+metadata/_edit_group_ = true
 
 [node name="Shop" parent="." instance=ExtResource("8_18nlu")]
 visible = false
