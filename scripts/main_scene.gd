@@ -41,35 +41,24 @@ func check_results():
 		var count = counts[num]
 
 		if num == 1:  # Cherries (1) → Add 50 points per cherry & scales
-			if count <=2:
-				score_to_add += count * 50
-			elif count <= 4:
-				score_to_add += count * 100
-			elif count == 5:
-				score_to_add += count * 1000
-				AudioPlayer.play_sfx(Global.jackpot)
+			score_to_add += count * 10
 				
 		elif num == 2:  # Bananas (2) → Apply multipliers based on count
-			if count <=2:
-				score_to_add += count * 200
-			elif count <=4:
-				score_to_add += count * 500
-			elif count == 5:
-				score_to_add += count * 5000
-				AudioPlayer.play_sfx(Global.jackpot)
+			score_to_add += count * 30
 
 		elif num == 3:  # 7s (3) → Apply multipliers based on count
-			if count <= 2:
-				multiplier += 4
-			elif count <=4:
-				multiplier += 24
-			elif count == 5:
-				multiplier += 99
-				AudioPlayer.play_sfx(Global.jackpot)
-				is_jackpot = true
+			score_to_add += count * 100
+		
+		if count == 3:
+			multiplier == 3
+		
+		if count == 5:
+			multiplier == 10
+			AudioPlayer.play_sfx(Global.jackpot)
+			is_jackpot = true
 
 	# Add cherry points
-	Global.player_score += (score_to_add * multiplier) + ((Global.bet_money * 10) * multiplier)
+	Global.player_score += (score_to_add * multiplier) * Global.bet_money
 	
 	update_score()
 	update_labels()
@@ -167,11 +156,20 @@ func set_target_score(round: int):
 		Global.target_score = 1000000
 
 func calc_reward() -> int:
-	var reward_multiplier: float = 1.0 + ((Global.max_spins - spin_num) * 0.1)
-	print(reward_multiplier)
-	print(Global.base_reward*reward_multiplier)
-	return int(Global.base_reward * reward_multiplier)
-
+	var base_reward = 0
+	var reward_multiplier: int = (Global.max_spins - spin_num) * 20
+	if Global.current_round == 1:
+		base_reward = Global.base_reward
+	elif Global.current_round == 2:
+		base_reward = 500
+	elif Global.current_round == 3:
+		base_reward = 1000
+	elif Global.current_round == 4:
+		base_reward = 2500
+	elif Global.current_round == 5:
+		base_reward = 5000
+	return base_reward + reward_multiplier
+	
 func award_reward():
 	var reward = calc_reward()
 	Global.player_money += reward
