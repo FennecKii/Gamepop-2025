@@ -131,6 +131,8 @@ func _on_play_again_pressed():
 func _on_quit_pressed():
 	AudioPlayer.play_sfx(Global.button_click)
 	AudioPlayer._play_music(Global.menu_music, 0.0)
+	Global.max_spins = 5
+	Global.init_game_state(1, initial_target, 0, initial_money)
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_shop_next_round_pressed():

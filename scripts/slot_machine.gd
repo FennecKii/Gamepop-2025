@@ -122,3 +122,6 @@ func _on_shop_next_round_pressed():
 
 func _on_play_again_pressed():
 	Global.bet_money = 0
+
+func _on_quit_pressed():
+	Global.bet_money = 0
