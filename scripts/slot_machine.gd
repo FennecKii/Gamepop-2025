@@ -115,3 +115,7 @@ func filter_audio(position: int, volume: float = 0.0):
 		AudioPlayer.play_sfx(Global.coin3_click, volume)
 	elif position == 4:
 		AudioPlayer.play_sfx(Global.coin5_click, volume)
+
+func _on_shop_next_round_pressed():
+	Global.bet_money = 0
+	money_update()

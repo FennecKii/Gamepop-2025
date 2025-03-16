@@ -18,10 +18,10 @@ enum IconID {BLANK, CHERRY, BANANA, SEVEN, KIWI, WATERMELON, TOMATO, AVOCADO, PI
 
 var max_rounds: int = 5
 var max_spins: int = 5
-
+var current_round: int
 var bet_money: int
 var player_score: int
-var player_money = 100
+var player_money: int
 var target_score: int
 var slot_data: Array[int]
 var default_prob_array: Array[int] = [1, 1, 1, 2, 2, 3]
@@ -65,5 +65,6 @@ func init_game_state(round: int, target: int, score: int, money: int):
 	player_score = score
 	player_money = money
 	target_score = target
+	current_round = round
 	if round == 1:
 		player_prob_array = default_prob_array.duplicate()

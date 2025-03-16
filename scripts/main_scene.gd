@@ -11,10 +11,9 @@ extends Control
 @onready var slot_machine = $SlotMachineUI
 @onready var shop = $Shop
 
-var round_num: int = 1
 var spin_num: int = 0
 var initial_target: int = 10000
-var initial_money: int
+var initial_money: int = 100
 var is_jackpot: bool = false
 
 func _ready():
@@ -23,7 +22,7 @@ func _ready():
 	lose_panel.visible = false
 	win_panel.visible = false
 	# Initialize game state
-	Global.init_game_state(round_num, initial_target, 0, Global.player_money)
+	Global.init_game_state(1, initial_target, 0, initial_money)
 	update_score()
 	update_labels()
 
@@ -42,7 +41,7 @@ func check_results():
 		var count = counts[num]
 
 		if num == 1:  # Cherries (1) → Add 50 points per cherry
-			score_to_add += count * 50
+			score_to_add += count * 2500
 
 		elif num == 2:  # Bananas (2) → Apply multipliers based on count
 			if count == 2:
@@ -75,30 +74,29 @@ func check_results():
 	update_labels()
 
 func win_check():
-	if Global.player_score >= Global.target_score and round_num < Global.max_rounds: # Win condition
+	if Global.player_score >= Global.target_score and Global.current_round < Global.max_rounds: # Win condition
 		spin_num = 0
-		round_num += 1
-		Global.init_game_state(round_num, Global.target_score*2, 0, Global.player_money)
+		Global.current_round += 1
+		Global.init_game_state(Global.current_round, Global.target_score*2, 0, Global.player_money)
 		AudioPlayer.play_sfx(Global.round_win_sound)
 		win_round_anim.play("win")
 		win_round_panel.visible = true
 	
-	elif Global.player_score >= Global.target_score and round_num == Global.max_rounds: # Final win condition
+	elif Global.player_score >= Global.target_score and Global.current_round == Global.max_rounds: # Final win condition
 		spin_num = 0
-		round_num = 1
-		Global.init_game_state(round_num, initial_target, 0, Global.player_money)
+		Global.init_game_state(1, initial_target, 0, Global.player_money)
 		AudioPlayer.play_sfx(Global.game_win_sound)
 		win_panel.visible = true
 	
-	elif spin_num == Global.max_spins and Global.player_score < Global.target_score and round_num <= Global.max_rounds or Global.player_money == 0: # Lose condition
+	elif spin_num == Global.max_spins and Global.player_score < Global.target_score and Global.current_round <= Global.max_rounds or Global.player_money < 10: # Lose condition
 		spin_num = 0
-		round_num = 1
+		Global.current_round = 1
 		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
 
 func _on_slot_machine_spin_pressed():
 	spin_num += 1
-	if spin_num <= 5:
+	if spin_num <= Global.max_spins:
 		update_labels()
 		check_results()
 		if is_jackpot:
@@ -112,24 +110,31 @@ func update_score():
 	score_label.text = str(Global.player_score)
 
 func update_labels():
-	rounds_label.text = "Round: " + str(round_num)
+	rounds_label.text = "Round: " + str(Global.current_round)
 	spins_label.text = "Spins\n" + str(Global.max_spins - spin_num)
 	goal_label.text = "Goal: " + str(Global.target_score)
 
 func _on_shop_pressed():
 	update_score()
-	update_labels()
 	AudioPlayer.play_sfx(Global.coin4_click)
 	win_round_panel.visible = false
 	shop.visible = true
 
 func _on_play_again_pressed():
 	AudioPlayer.play_sfx(Global.mystic_click)
-	Global.player_money = 100 
-	Global.init_game_state(1, initial_target, 0, Global.player_money)
+	Global.init_game_state(1, initial_target, 0, initial_money)
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 
 func _on_quit_pressed():
 	AudioPlayer.play_sfx(Global.button_click)
 	AudioPlayer._play_music(Global.menu_music, 0.0)
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_shop_next_round_pressed():
+	update_score()
+	update_labels()
+	if Global.player_money < 10:
+		spin_num = 0
+		await get_tree().create_timer(3).timeout
+		AudioPlayer.play_sfx(Global.game_lose_sound)
+		lose_panel.visible = true

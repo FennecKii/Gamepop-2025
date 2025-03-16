@@ -176,7 +176,6 @@ animations = [{
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wq3r8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o17uc"]
-
 bg_color = Color(0.490196, 0.0705882, 1, 1)
 border_width_left = 1
 border_width_top = 1
