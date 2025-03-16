@@ -149,16 +149,19 @@ metadata/_edit_group_ = true
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = 46.0
-offset_top = 25.0
-offset_right = 1326.0
-offset_bottom = 745.0
+offset_left = -16.0
+offset_top = 8.0
+offset_right = 1264.0
+offset_bottom = 728.0
 texture = ExtResource("5_c16ls")
 
-[node name="You Won" type="Label" parent="WinPanel"]
+[node name="ColorRect" type="ColorRect" parent="WinPanel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 16.0
+offset_top = -8.0
+offset_right = 1296.0
+offset_bottom = 712.0
+color = Color(1, 1, 1, 0)
 
 [node name="Play Again" type="Button" parent="WinPanel"]
 layout_mode = 0
@@ -193,20 +196,19 @@ text = "Main Menu"
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = -26.0
-offset_top = 20.0
-offset_right = 1254.0
-offset_bottom = 740.0
+offset_left = -16.0
+offset_top = 8.0
+offset_right = 1264.0
+offset_bottom = 728.0
 texture = ExtResource("6_18nlu")
 
-[node name="You Lost" type="Label" parent="LosePanel"]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="LosePanel"]
 layout_mode = 0
-offset_left = 435.0
-offset_top = 358.0
-offset_right = 515.0
-offset_bottom = 381.0
-text = "You Lost :("
+offset_left = 16.0
+offset_top = -8.0
+offset_right = 1296.0
+offset_bottom = 712.0
+color = Color(1, 1, 1, 0)
 
 [node name="Play Again" type="Button" parent="LosePanel"]
 layout_mode = 0
@@ -237,16 +239,14 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Round Won" type="Label" parent="WinRoundPanel"]
+[node name="ColorRect" type="ColorRect" parent="WinRoundPanel"]
 layout_mode = 0
-offset_left = 536.0
-offset_top = 240.0
-offset_right = 619.0
-offset_bottom = 263.0
-text = "You Won :)"
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(1, 1, 1, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WinRoundPanel"]
-position = Vector2(606, 367)
+position = Vector2(624, 368)
 sprite_frames = SubResource("SpriteFrames_4w45t")
 animation = &"win"
 

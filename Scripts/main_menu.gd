@@ -6,11 +6,11 @@ func _ready():
 	AudioPlayer._play_music(Global.menu_music, 0.0)
 
 func _on_play_pressed():
-	AudioPlayer.play_sfx(Global.mystic_click)
-	AudioPlayer._play_music(Global.music_array.pick_random(), -5)
+	AudioPlayer.play_sfx(Global.mystic_click, 5)
+	AudioPlayer._play_music(Global.music_array.pick_random(), -6)
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 
 func _on_quit_pressed():
-	AudioPlayer.play_sfx(Global.button_click)
+	AudioPlayer.play_sfx(Global.button_click, 5)
 	await get_tree().create_timer(0.5).timeout
 	get_tree().quit()
