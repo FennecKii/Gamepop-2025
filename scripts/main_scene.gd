@@ -254,3 +254,6 @@ func award_reward():
 	var reward = calc_reward()
 	Global.player_money += reward
 	print(Global.player_money)
+
+func _on_button_mouse_entered():
+	AudioPlayer.play_sfx(Global.button_hover)

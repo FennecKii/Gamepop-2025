@@ -14,3 +14,6 @@ func _on_quit_pressed():
 	AudioPlayer.play_sfx(Global.button_click, 5)
 	await get_tree().create_timer(0.5).timeout
 	get_tree().quit()
+
+func _on_button_mouse_entered():
+	AudioPlayer.play_sfx(Global.button_hover)
