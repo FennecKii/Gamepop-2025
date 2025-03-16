@@ -31,7 +31,7 @@ var animation_playing: bool = false
 signal spin_pressed
 
 func _ready():
-	money_label.text = "Money: " + str(Global.player_money)
+	money_update()
 
 func money_update():
 	money_label.text = "Money: " + str(Global.player_money)
@@ -119,3 +119,6 @@ func filter_audio(position: int, volume: float = 0.0):
 func _on_shop_next_round_pressed():
 	Global.bet_money = 0
 	money_update()
+
+func _on_play_again_pressed():
+	Global.bet_money = 0

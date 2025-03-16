@@ -21,10 +21,10 @@ var max_spins: int = 5
 var current_round: int
 var bet_money: int
 var player_score: int
-var player_money: int
+var player_money: int = 100
 var target_score: int
 var slot_data: Array[int]
-var default_prob_array: Array[int] = [1, 1, 1, 2, 2, 3]
+var default_prob_array: Array[int] = [1, 1, 1, 2, 2, 3] 
 var player_prob_array: Array[int]
 
 # Audio preloads

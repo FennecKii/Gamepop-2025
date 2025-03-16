@@ -77,7 +77,8 @@ func win_check():
 	if Global.player_score >= Global.target_score and Global.current_round < Global.max_rounds: # Win condition
 		spin_num = 0
 		Global.current_round += 1
-		Global.init_game_state(Global.current_round, Global.target_score*2, 0, Global.player_money)
+		set_target_score(Global.current_round)
+		Global.init_game_state(Global.current_round, Global.target_score, 0, Global.player_money)
 		AudioPlayer.play_sfx(Global.round_win_sound)
 		win_round_anim.play("win")
 		win_round_panel.visible = true
@@ -91,6 +92,7 @@ func win_check():
 	elif spin_num == Global.max_spins and Global.player_score < Global.target_score and Global.current_round <= Global.max_rounds or Global.player_money < 10: # Lose condition
 		spin_num = 0
 		Global.current_round = 1
+		Global.player_money = initial_money
 		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
 
@@ -122,6 +124,7 @@ func _on_shop_pressed():
 
 func _on_play_again_pressed():
 	AudioPlayer.play_sfx(Global.mystic_click)
+	Global.max_spins = 5
 	Global.init_game_state(1, initial_target, 0, initial_money)
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 
@@ -138,3 +141,15 @@ func _on_shop_next_round_pressed():
 		await get_tree().create_timer(3).timeout
 		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
+
+func set_target_score(round: int):
+	if round == 1:
+		Global.target_score = initial_target
+	if round == 2:
+		Global.target_score = 50000
+	if round == 3:
+		Global.target_score = 100000
+	if round == 4:
+		Global.target_score = 250000
+	if round == 5:
+		Global.target_score = 1000000
