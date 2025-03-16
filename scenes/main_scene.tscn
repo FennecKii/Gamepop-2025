@@ -278,7 +278,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_si52b")
 text = "Main Menu"
 
 [node name="Shop" parent="." instance=ExtResource("8_18nlu")]
-visible = false
 z_index = 1
 offset_left = 42.0
 offset_top = 84.0
