@@ -48,6 +48,8 @@ func _on_plus_button_pressed():
 		Global.bet_money += 10
 		AudioPlayer.play_sfx(Global.add_money)
 		money_update()
+	if Global.player_money < 10:
+		bet_label.text = "All In"
 
 func _on_button_pressed():
 	if is_spinning: # Display text for when still spinning
