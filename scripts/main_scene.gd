@@ -41,24 +41,43 @@ func check_results():
 		var count = counts[num]
 
 		if num == 1:  # Cherries (1) → Add 50 points per cherry & scales
-			score_to_add += count * 10
+			score_to_add += count * 15
 				
 		elif num == 2:  # Bananas (2) → Apply multipliers based on count
-			score_to_add += count * 30
+			score_to_add += count * 35
 
 		elif num == 3:  # 7s (3) → Apply multipliers based on count
-			score_to_add += count * 100
+			score_to_add += count * 130
 		
 		if count == 3:
-			multiplier == 3
+			multiplier = 3
 		
-		if count == 5:
-			multiplier == 10
+		elif count == 4:
+			multiplier = 5
+		
+		elif count == 5:
+			multiplier = 10
 			AudioPlayer.play_sfx(Global.jackpot)
 			is_jackpot = true
 
 	# Add cherry points
-	Global.player_score += (score_to_add * multiplier) * Global.bet_money
+	
+	if Global.current_round == 1:
+		multiplier = multiplier
+	elif Global.current_round == 2:
+		multiplier = multiplier * 3
+	elif Global.current_round == 3:
+		multiplier = multiplier * 5
+	elif Global.current_round == 4:
+		multiplier = multiplier * 10
+	elif Global.current_round == 5:
+		multiplier = multiplier * 20
+		
+	print(score_to_add)
+	print(multiplier)
+	print(Global.bet_money)
+	Global.player_score += (score_to_add * multiplier) * int(Global.bet_money * 0.25)
+	print(Global.player_score)
 	
 	update_score()
 	update_labels()
