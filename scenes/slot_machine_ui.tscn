@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://pt4ljk687pwo"]
 
-[ext_resource type="Script" uid="uid://x5p8u6hl35wa" path="res://scripts/slot_machine.gd" id="1_x6tmx"]
+[ext_resource type="Script" uid="uid://x5p8u6hl35wa" path="res://Scripts/slot_machine.gd" id="1_x6tmx"]
 [ext_resource type="Texture2D" uid="uid://ckp53kewda5th" path="res://assets/Slot-Machine2.0.png" id="2_5ams1"]
 [ext_resource type="Texture2D" uid="uid://bbmeyvmt3c1l3" path="res://assets/Cherry.png" id="2_icp5i"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="3_s6ofq"]
@@ -222,6 +222,7 @@ offset_bottom = 296.0
 texture = ExtResource("2_5ams1")
 
 [node name="SlotSpinDisplay" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 0
 offset_left = 86.0
 offset_top = 96.0
 offset_right = 273.0
@@ -398,6 +399,7 @@ text = "Not enough money!"
 
 [node name="BetPrompt" type="Label" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 216.0
 offset_top = 280.0
 offset_right = 439.0
@@ -409,6 +411,7 @@ text = "Bet at least 10!"
 
 [node name="SpinPrompt" type="Label" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 216.0
 offset_top = 280.0
 offset_right = 439.0
