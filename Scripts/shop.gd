@@ -61,7 +61,8 @@ func _on_shop_pressed():
 	money_update()
 	set_shop_prices()
 	extra_spin_label.text = "Add Extra Spin (Cost: " + str(extra_spin_cost)+ ")"
-	increase_prob_label.text = "Algorithm Override (Cost: " + str(algo_override_cost)+ ")"
+	increase_prob_label.text = "Algorithm Override (Cost: " + str(algo_override_cost)+ ")
+	Increase your odds ;)"
 	payout_increase_label.text = "Payout Increase (Cost: " + str(payout_increase_cost)+ ")"
 
 func set_shop_prices():
