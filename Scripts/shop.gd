@@ -47,6 +47,7 @@ func _on_payout_increase():
 		AudioPlayer.play_sfx(Global.purchase_chime, -1)
 		Global.player_money -= 5
 		upgrade_payout_increase.text += "|"
+		Global.base_reward += 2
 		money_update()
 	else:
 		AudioPlayer.play_sfx(Global.negative_feedback)

@@ -75,6 +75,7 @@ func check_results():
 
 func win_check():
 	if Global.player_score >= Global.target_score and Global.current_round < Global.max_rounds: # Win condition
+		award_reward()
 		spin_num = 0
 		Global.current_round += 1
 		set_target_score(Global.current_round)
@@ -84,6 +85,7 @@ func win_check():
 		win_round_panel.visible = true
 	
 	elif Global.player_score >= Global.target_score and Global.current_round == Global.max_rounds: # Final win condition
+		award_reward()
 		spin_num = 0
 		Global.init_game_state(1, initial_target, 0, Global.player_money)
 		AudioPlayer.stop()
@@ -159,3 +161,14 @@ func set_target_score(round: int):
 		Global.target_score = 250000
 	if round == 5:
 		Global.target_score = 1000000
+
+func calc_reward() -> int:
+	var reward_multiplier: float = 1.0 + ((Global.max_spins - spin_num) * 0.1)
+	print(reward_multiplier)
+	print(Global.base_reward*reward_multiplier)
+	return int(Global.base_reward * reward_multiplier)
+
+func award_reward():
+	var reward = calc_reward()
+	Global.player_money += reward
+	print(Global.player_money)
