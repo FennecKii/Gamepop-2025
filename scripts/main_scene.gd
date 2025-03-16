@@ -13,6 +13,7 @@ var round_num: int = 1
 var spin_num: int = 0
 var initial_target: int = 10000
 var initial_money: int
+var is_jackpot: bool = false
 
 func _ready():
 	# Initialize game state
@@ -54,7 +55,9 @@ func check_results():
 		# If there are 5 of a kind of any number → Add global.goal to bank
 		if count == 5:
 			Global.player_score += Global.target_score
+			AudioPlayer.play_sfx(Global.jackpot)
 			update_score()
+			is_jackpot = true
 			return  # Skip other calculations if 5 of a kind is met
 
 	# Add cherry points
@@ -70,17 +73,20 @@ func win_check():
 		spin_num = 0
 		round_num += 1
 		Global.init_game_state(round_num, Global.target_score*2, 0, Global.player_money)
+		AudioPlayer.play_sfx(Global.round_win_sound)
 		win_round_panel.visible = true
 	
 	elif Global.player_score >= Global.target_score and round_num == Global.max_rounds: # Final win condition
 		spin_num = 0
 		round_num = 1
 		Global.init_game_state(round_num, initial_target, 0, Global.player_money)
+		AudioPlayer.play_sfx(Global.game_win_sound)
 		win_panel.visible = true
 	
 	elif spin_num == Global.max_spins and Global.player_score < Global.target_score and round_num <= Global.max_rounds or Global.player_money == 0: # Lose condition
 		spin_num = 0
 		round_num = 1
+		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
 
 func _on_slot_machine_spin_pressed():
@@ -88,7 +94,12 @@ func _on_slot_machine_spin_pressed():
 	if spin_num <= 5:
 		update_labels()
 		check_results()
-		win_check()
+		if is_jackpot:
+			await get_tree().create_timer(3).timeout
+			win_check()
+		else:
+			win_check()
+		is_jackpot = false
 
 func update_score():
 	score_label.text = str(Global.player_score)
@@ -101,13 +112,16 @@ func update_labels():
 func _on_shop_pressed():
 	update_score()
 	update_labels()
+	AudioPlayer.play_sfx(Global.coin4_click)
 	win_round_panel.visible = false
 	get_tree().change_scene_to_file("res://scenes/shop.tscn")
 
 func _on_play_again_pressed():
+	AudioPlayer.play_sfx(Global.mystic_click)
 	Global.player_money = 100 
 	Global.init_game_state(1, initial_target, 0, Global.player_money)
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 
 func _on_quit_pressed():
+	AudioPlayer.play_sfx(Global.button_click)
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

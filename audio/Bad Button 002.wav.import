@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7inwllnfy3mg"
+path="res://.godot/imported/Bad Button 002.wav-3899d4783865ea5c6d86a228f1b06066.sample"
+
+[deps]
+
+source_file="res://audio/Bad Button 002.wav"
+dest_files=["res://.godot/imported/Bad Button 002.wav-3899d4783865ea5c6d86a228f1b06066.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

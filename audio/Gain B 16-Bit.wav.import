@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btww5cwl341po"
+path="res://.godot/imported/Gain B 16-Bit.wav-3e7dbaaa8412e4cb4dd2317998e961e3.sample"
+
+[deps]
+
+source_file="res://audio/Gain B 16-Bit.wav"
+dest_files=["res://.godot/imported/Gain B 16-Bit.wav-3e7dbaaa8412e4cb4dd2317998e961e3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -16,9 +16,14 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 Global="*res://Scripts/Global.gd"
 
+[audio]
+
+buses/default_bus_layout="res://resources/default_bus_layout.tres"
+
 [autoload]
 
 Global="*res://scripts/Global.gd"
+AudioPlayer="*res://scenes/audio_stream_player_2d.tscn"
 
 [display]
 

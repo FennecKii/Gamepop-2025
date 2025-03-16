@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1sniwmns8r1t"
+path="res://.godot/imported/Funk Click A.wav-18050e8c839ff7088407b6cd0f95e1b5.sample"
+
+[deps]
+
+source_file="res://audio/Funk Click A.wav"
+dest_files=["res://.godot/imported/Funk Click A.wav-18050e8c839ff7088407b6cd0f95e1b5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
