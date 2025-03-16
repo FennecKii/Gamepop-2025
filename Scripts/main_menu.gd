@@ -1,4 +1,8 @@
 extends Node2D
+@onready var background = $Background2/AnimatedSprite2D
+
+func _ready():
+	background.play("default")
 
 func _ready():
 	AudioPlayer._play_music(Global.menu_music, 0.0)
