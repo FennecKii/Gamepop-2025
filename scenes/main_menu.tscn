@@ -1,7 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://b3h2vmy126gmd"]
 
-[ext_resource type="Script" uid="uid://df3o4chinak62" path="res://Scripts/main_menu.gd" id="1_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://d4d6x4qfu18co" path="res://icon.svg" id="2_bqqt6"]
+[ext_resource type="Script" uid="uid://df3o4chinak62" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cy4dww07yufts" path="res://assets/Titlescreen.png" id="3_8ln24"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="3_bqqt6"]
 [ext_resource type="StyleBox" uid="uid://c2h1vpbnfi54p" path="res://resources/play_button_style.tres" id="4_wu84c"]
@@ -186,6 +185,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wu84c")
 text = "Quit"
 
 [node name="SettingsPanel" type="ColorRect" parent="."]
+visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(1, 1, 1, 0)
