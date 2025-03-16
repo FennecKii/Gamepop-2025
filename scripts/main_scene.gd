@@ -34,7 +34,7 @@ func check_results():
 		counts[num] = counts.get(num, 0) + 1
 
 	# Apply scoring rules
-	var score_to_add = Global.bet_money
+	var score_to_add = 0
 	var multiplier = 1
 
 	for num in counts.keys():
@@ -69,7 +69,7 @@ func check_results():
 				is_jackpot = true
 
 	# Add cherry points
-	Global.player_score += score_to_add * multiplier
+	Global.player_score += (score_to_add * multiplier) + ((Global.bet_money * 10) * multiplier)
 	
 	update_score()
 	update_labels()

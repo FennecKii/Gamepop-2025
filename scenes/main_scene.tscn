@@ -253,9 +253,9 @@ animation = &"win"
 [node name="Shop" type="Button" parent="WinRoundPanel"]
 z_index = 1
 layout_mode = 0
-offset_left = 533.0
+offset_left = 550.0
 offset_top = 426.0
-offset_right = 697.0
+offset_right = 714.0
 offset_bottom = 499.0
 theme_override_colors/font_outline_color = Color(1.63645e-06, 0.808187, 1.54018e-06, 1)
 theme_override_colors/font_color = Color(0.325915, 1, 0.298232, 1)
@@ -268,10 +268,10 @@ text = "Shop"
 
 [node name="Quit" type="Button" parent="WinRoundPanel"]
 layout_mode = 0
-offset_left = 536.0
-offset_top = 519.0
-offset_right = 698.0
-offset_bottom = 591.0
+offset_left = 553.0
+offset_top = 518.0
+offset_right = 715.0
+offset_bottom = 590.0
 theme_override_fonts/font = ExtResource("4_pu3yx")
 theme_override_font_sizes/font_size = 19
 theme_override_styles/normal = SubResource("StyleBoxFlat_si52b")
