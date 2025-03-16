@@ -3,8 +3,6 @@ extends Node2D
 
 func _ready():
 	background.play("default")
-
-func _ready():
 	AudioPlayer._play_music(Global.menu_music, 0.0)
 
 func _on_play_pressed():
