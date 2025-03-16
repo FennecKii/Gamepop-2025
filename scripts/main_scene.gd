@@ -27,6 +27,8 @@ extends Control
 @onready var spin_num: int = 0
 @onready var streak_counter = 0
 
+@onready var block = $Block
+
 var legend_visible: bool = false
 var target_position = Vector2(500,0)
 var original_position = Vector2(-150,0)
@@ -165,7 +167,9 @@ func win_check():
 		Global.init_game_state(Global.current_round, Global.target_score, 0, Global.player_money)
 		AudioPlayer.play_sfx(Global.round_win_sound, 1)
 		win_round_anim.play("win")
+		block.visible = true
 		await get_tree().create_timer(2.5).timeout
+		block.visible = false
 		win_round_panel.visible = true
 	
 	elif Global.player_score >= Global.target_score and Global.current_round == Global.max_rounds: # Final win condition
@@ -176,7 +180,9 @@ func win_check():
 		Global.init_game_state(1, initial_target, 0, Global.player_money)
 		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_win_sound)
+		block.visible = true
 		await get_tree().create_timer(3).timeout
+		block.visible = false
 		win_panel.visible = true
 	
 	elif spin_num == Global.max_spins and Global.player_score < Global.target_score and Global.current_round <= Global.max_rounds or Global.player_money < 10: # Lose condition
@@ -185,7 +191,9 @@ func win_check():
 		lose_panel_score_label.text = "Score: " + str(Global.player_score)
 		lose_panel_money_label.text = "Money: " + str(Global.player_money)
 		Global.player_money = initial_money
+		block.visible = true
 		await get_tree().create_timer(1).timeout
+		block.visible = false
 		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
@@ -197,7 +205,9 @@ func _on_slot_machine_spin_pressed():
 		update_labels()
 		check_results()
 		if is_jackpot == true:
+			block.visible = true
 			await get_tree().create_timer(8.5).timeout
+			block.visible = false
 			win_check()
 			is_jackpot = false
 		else:
