@@ -181,6 +181,7 @@ func win_check():
 
 func _on_slot_machine_spin_pressed():
 	spin_num += 1
+	
 	if spin_num <= Global.max_spins:
 		update_labels()
 		check_results()
@@ -195,7 +196,7 @@ func update_score():
 	score_label.text = str(Global.player_score)
 
 func update_labels():
-	streak_label.text = "Streak: " + str(streak_counter)
+	streak_label.text = "Streak: " + str(streak_counter) + "x"
 	rounds_label.text = "Round: " + str(Global.current_round)
 	spins_label.text = "Spins\n" + str(Global.max_spins - spin_num)
 	goal_label.text = "Goal: " + str(Global.target_score)
@@ -248,15 +249,15 @@ func calc_reward() -> int:
 	if Global.current_round == 1:
 		print(Global.player_score)
 		print(Global.target_score)
-		base_reward = Global.base_reward + (Global.player_score - Global.target_score)/2 + Global.base_reward * 0.25
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*0.25
 	elif Global.current_round == 2:
-		base_reward = Global.base_reward + (Global.player_score - Global.target_score)/2 + Global.base_reward * 0.5
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*0.5
 	elif Global.current_round == 3:
-		base_reward = Global.base_reward + (Global.player_score - Global.target_score)/2 + Global.base_reward * 1
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*1
 	elif Global.current_round == 4:
-		base_reward = Global.base_reward + (Global.player_score - Global.target_score)/2 + Global.base_reward * 2
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*1.25
 	elif Global.current_round == 5:
-		base_reward = Global.base_reward + (Global.player_score - Global.target_score)/2 + Global.base_reward * 2.5
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)*1.50
 		
 	print(base_reward)
 	print(reward_multiplier)

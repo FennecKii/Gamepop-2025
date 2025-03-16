@@ -26,7 +26,7 @@ var target_score: int
 var slot_data: Array[int]
 var default_prob_array: Array[int] = [1, 1, 1, 2, 2, 3] 
 var player_prob_array: Array[int]
-var base_reward: int = 100
+var base_reward: int = 50
 
 # Audio preloads
 @onready var button_click = preload("res://audio/Mystic Click B.wav")
