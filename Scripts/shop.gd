@@ -9,6 +9,9 @@ extends Control
 @onready var payout_increase_label = $PayoutIncreaseLabel
 @onready var next_round = $NextRoundButton
 @onready var player_money = $CurrentMoneyLabel
+@onready var upgrade_extra_spin = $UpgradeExtraSpinLabel
+@onready var upgrade_increase_prob = $UpgradeIncreaseProbLabel
+@onready var upgrade_payout_increase = $UpgradePayoutIncreaseLabel
 
 signal next_round_pressed
 
@@ -23,17 +26,20 @@ func _on_extra_spin_buy():
 	if Global.player_money >= 10:
 		Global.player_money -= 10
 		Global.max_spins += 1
+		upgrade_extra_spin.text += "|"
 		money_update()
 
 func _on_change_prob_buy():
 	if Global.player_money >= 20:
 		Global.player_money -= 20
 		Global.player_prob_array.append(Global.default_prob_array.pick_random())
+		upgrade_increase_prob.text += "|"
 		money_update()
 
 func _on_payout_increase():
 	if Global.player_money >= 5:
 		Global.player_money -= 5
+		upgrade_payout_increase.text += "|"
 		money_update()
 
 func _on_next_round():
