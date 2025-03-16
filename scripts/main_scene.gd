@@ -40,35 +40,36 @@ func check_results():
 	for num in counts.keys():
 		var count = counts[num]
 
-		if num == 1:  # Cherries (1) → Add 50 points per cherry
-			score_to_add += count * 2500
-
+		if num == 1:  # Cherries (1) → Add 50 points per cherry & scales
+			if count <=2:
+				score_to_add += count * 50
+			elif count <= 4:
+				score_to_add += count * 100
+			elif count == 5:
+				score_to_add += count * 1000
+				AudioPlayer.play_sfx(Global.jackpot)
+				
 		elif num == 2:  # Bananas (2) → Apply multipliers based on count
-			if count == 2:
-				multiplier += 2
-			elif count == 3:
-				multiplier += 3
-			elif count == 4:
-				multiplier += 4
+			if count <=2:
+				score_to_add += count * 200
+			elif count <=4:
+				score_to_add += count * 500
+			elif count == 5:
+				score_to_add += count * 5000
+				AudioPlayer.play_sfx(Global.jackpot)
 
 		elif num == 3:  # 7s (3) → Apply multipliers based on count
-			if count == 3:
-				multiplier += 10
-			elif count == 4:
-				multiplier += 20
-
-		# If there are 5 of a kind of any number → Add global.goal to bank
-		if count == 5:
-			Global.player_score += Global.target_score
-			AudioPlayer.play_sfx(Global.jackpot, -1)
-			update_score()
-			is_jackpot = true
-			return  # Skip other calculations if 5 of a kind is met
+			if count <= 2:
+				multiplier += 4
+			elif count <=4:
+				multiplier += 24
+			elif count == 5:
+				multiplier += 99
+				AudioPlayer.play_sfx(Global.jackpot)
+				is_jackpot = true
 
 	# Add cherry points
-	Global.player_score += score_to_add
-	# Apply multiplier (Bananas and 7s)
-	Global.player_score *= multiplier
+	Global.player_score += score_to_add * multiplier
 	
 	update_score()
 	update_labels()
@@ -82,6 +83,7 @@ func win_check():
 		Global.init_game_state(Global.current_round, Global.target_score, 0, Global.player_money)
 		AudioPlayer.play_sfx(Global.round_win_sound)
 		win_round_anim.play("win")
+		await get_tree().create_timer(3).timeout
 		win_round_panel.visible = true
 	
 	elif Global.player_score >= Global.target_score and Global.current_round == Global.max_rounds: # Final win condition
@@ -90,12 +92,14 @@ func win_check():
 		Global.init_game_state(1, initial_target, 0, Global.player_money)
 		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_win_sound)
+		await get_tree().create_timer(3).timeout
 		win_panel.visible = true
 	
 	elif spin_num == Global.max_spins and Global.player_score < Global.target_score and Global.current_round <= Global.max_rounds or Global.player_money < 10: # Lose condition
 		spin_num = 0
 		Global.current_round = 1
 		Global.player_money = initial_money
+		await get_tree().create_timer(1).timeout
 		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
