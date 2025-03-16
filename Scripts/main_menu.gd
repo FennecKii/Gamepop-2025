@@ -1,5 +1,7 @@
 extends Node2D
+
 @onready var background = $Background2/AnimatedSprite2D
+@onready var settings_panel = $SettingsPanel
 
 func _ready():
 	background.play("default")
@@ -20,3 +22,11 @@ func _on_quit_pressed():
 
 func _on_button_mouse_entered():
 	AudioPlayer.play_sfx(Global.button_hover)
+
+func _on_settings_pressed():
+	AudioPlayer.play_sfx(Global.button_click, 5)
+	settings_panel.visible = true
+
+func _on_close_pressed():
+	AudioPlayer.play_sfx(Global.button_click, 5)
+	settings_panel.visible = false
