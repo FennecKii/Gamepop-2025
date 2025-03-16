@@ -131,4 +131,5 @@ func _on_play_again_pressed():
 
 func _on_quit_pressed():
 	AudioPlayer.play_sfx(Global.button_click)
+	AudioPlayer._play_music(Global.menu_music, 0.0)
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

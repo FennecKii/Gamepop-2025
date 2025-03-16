@@ -1,7 +1,11 @@
 extends Node2D
 
+func _ready():
+	AudioPlayer._play_music(Global.menu_music, 0.0)
+
 func _on_play_pressed():
 	AudioPlayer.play_sfx(Global.mystic_click)
+	AudioPlayer._play_music(Global.music_array.pick_random(), -5)
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 
 func _on_quit_pressed():
