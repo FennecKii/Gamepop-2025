@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dyesgrb31hily"]
+[gd_scene load_steps=44 format=3 uid="uid://dyesgrb31hily"]
 
 [ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://Scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://pt4ljk687pwo" path="res://scenes/slot_machine_ui.tscn" id="2_7ykc4"]
@@ -13,6 +13,19 @@
 [ext_resource type="FontFile" uid="uid://dq578jcivuufm" path="res://resources/whitrabt.ttf" id="10_4w45t"]
 [ext_resource type="Texture2D" uid="uid://rp70v42ptrr8" path="res://assets/FinalLegend3.0.png" id="12_mngbo"]
 [ext_resource type="PackedScene" uid="uid://dg2lsftc1a5nm" path="res://scenes/settings_panel.tscn" id="13_4w45t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4w45t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.564962, 0.564962, 0.564961, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4w45t"]
 atlas = ExtResource("12_mngbo")
@@ -334,6 +347,13 @@ offset_left = 49.0
 offset_top = 643.0
 offset_right = 166.0
 offset_bottom = 694.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 0
+theme_override_fonts/font = ExtResource("4_pu3yx")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_4w45t")
 text = "Legend"
 
 [node name="Legend" type="TextureRect" parent="."]
