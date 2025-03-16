@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyesgrb31hily"]
+[gd_scene load_steps=5 format=3 uid="uid://cvbntob5i42x"]
 
 [ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://Scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://pt4ljk687pwo" path="res://scenes/slot_machine_ui.tscn" id="2_7ykc4"]
