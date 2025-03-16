@@ -3,19 +3,7 @@
 [ext_resource type="Script" uid="uid://df3o4chinak62" path="res://Scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://d4d6x4qfu18co" path="res://icon.svg" id="2_bqqt6"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="3_bqqt6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
-bg_color = Color(0, 1, 1, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0.466667, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 1
+[ext_resource type="StyleBox" uid="uid://c2h1vpbnfi54p" path="res://resources/play_button_style.tres" id="4_wu84c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
 bg_color = Color(0.670588, 0.12549, 0.992157, 1)
@@ -81,7 +69,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_bqqt6")
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/normal = ExtResource("4_wu84c")
 text = "Play
 "
 
