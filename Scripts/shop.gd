@@ -24,26 +24,37 @@ func money_update():
 
 func _on_extra_spin_buy():
 	if Global.player_money >= 10:
+		AudioPlayer.play_sfx(Global.purchase_chime, -1)
 		Global.player_money -= 10
 		Global.max_spins += 1
 		upgrade_extra_spin.text += "|"
 		money_update()
+	else:
+		AudioPlayer.play_sfx(Global.negative_feedback)
 
 func _on_change_prob_buy():
 	if Global.player_money >= 20:
+		AudioPlayer.play_sfx(Global.purchase_chime, -1)
 		Global.player_money -= 20
 		upgrade_increase_prob.text += "|"
 		Global.player_prob_array.append([2,3].pick_random())
 		money_update()
+	else:
+		AudioPlayer.play_sfx(Global.negative_feedback)
 
 func _on_payout_increase():
 	if Global.player_money >= 5:
+		AudioPlayer.play_sfx(Global.purchase_chime, -1)
 		Global.player_money -= 5
 		upgrade_payout_increase.text += "|"
+		Global.base_reward += 2
 		money_update()
+	else:
+		AudioPlayer.play_sfx(Global.negative_feedback)
 
 func _on_next_round():
 	self.visible = false
+	AudioPlayer.play_sfx(Global.next_round_click)
 	next_round_pressed.emit()
 
 func _on_shop_pressed():

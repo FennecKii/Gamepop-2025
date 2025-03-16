@@ -76,6 +76,7 @@ func check_results():
 
 func win_check():
 	if Global.player_score >= Global.target_score and Global.current_round < Global.max_rounds: # Win condition
+		award_reward()
 		spin_num = 0
 		Global.current_round += 1
 		set_target_score(Global.current_round)
@@ -86,8 +87,10 @@ func win_check():
 		win_round_panel.visible = true
 	
 	elif Global.player_score >= Global.target_score and Global.current_round == Global.max_rounds: # Final win condition
+		award_reward()
 		spin_num = 0
 		Global.init_game_state(1, initial_target, 0, Global.player_money)
+		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_win_sound)
 		await get_tree().create_timer(3).timeout
 		win_panel.visible = true
@@ -97,6 +100,7 @@ func win_check():
 		Global.current_round = 1
 		Global.player_money = initial_money
 		await get_tree().create_timer(1).timeout
+		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
 
@@ -122,18 +126,19 @@ func update_labels():
 
 func _on_shop_pressed():
 	update_score()
-	AudioPlayer.play_sfx(Global.coin4_click)
+	AudioPlayer.play_sfx(Global.shop_click, -2)
 	win_round_panel.visible = false
 	shop.visible = true
 
 func _on_play_again_pressed():
-	AudioPlayer.play_sfx(Global.mystic_click)
+	AudioPlayer._play_music(Global.music_array.pick_random(), -5)
+	AudioPlayer.play_sfx(Global.mystic_click,5)
 	Global.max_spins = 5
 	Global.init_game_state(1, initial_target, 0, initial_money)
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 
 func _on_quit_pressed():
-	AudioPlayer.play_sfx(Global.button_click)
+	AudioPlayer.play_sfx(Global.button_click, 5)
 	AudioPlayer._play_music(Global.menu_music, 0.0)
 	Global.max_spins = 5
 	Global.init_game_state(1, initial_target, 0, initial_money)
@@ -145,6 +150,7 @@ func _on_shop_next_round_pressed():
 	if Global.player_money < 10:
 		spin_num = 0
 		await get_tree().create_timer(3).timeout
+		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
 
@@ -159,3 +165,14 @@ func set_target_score(round: int):
 		Global.target_score = 250000
 	if round == 5:
 		Global.target_score = 1000000
+
+func calc_reward() -> int:
+	var reward_multiplier: float = 1.0 + ((Global.max_spins - spin_num) * 0.1)
+	print(reward_multiplier)
+	print(Global.base_reward*reward_multiplier)
+	return int(Global.base_reward * reward_multiplier)
+
+func award_reward():
+	var reward = calc_reward()
+	Global.player_money += reward
+	print(Global.player_money)

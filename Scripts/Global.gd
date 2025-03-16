@@ -26,6 +26,7 @@ var target_score: int
 var slot_data: Array[int]
 var default_prob_array: Array[int] = [1, 1, 1, 2, 2, 3] 
 var player_prob_array: Array[int]
+var base_reward: int = 10
 
 # Audio preloads
 @onready var button_click = preload("res://audio/Funk Click A.wav")
@@ -38,6 +39,9 @@ var player_prob_array: Array[int]
 @onready var coin5_click = preload("res://audio/Coin 005.wav")
 @onready var coin6_click = preload("res://audio/Coin 006.wav")
 @onready var coin7_click = preload("res://audio/Coin 007.wav")
+@onready var shop_click = preload("res://audio/Coin Pickup 001.wav")
+@onready var next_round_click = preload("res://audio/UI Positive Signal 002.wav")
+@onready var purchase_chime = preload("res://audio/cash-register-fake-88639.mp3")
 @onready var jackpot = preload("res://audio/777.wav")
 @onready var add_money = preload("res://audio/Bad Button 002.wav")
 @onready var subtract_money = preload("res://audio/Bad Button 001.wav")
