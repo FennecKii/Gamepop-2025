@@ -32,8 +32,8 @@ func _on_extra_spin_buy():
 func _on_change_prob_buy():
 	if Global.player_money >= 20:
 		Global.player_money -= 20
-		Global.player_prob_array.append(Global.default_prob_array.pick_random())
 		upgrade_increase_prob.text += "|"
+		Global.player_prob_array.append([2,3].pick_random())
 		money_update()
 
 func _on_payout_increase():
