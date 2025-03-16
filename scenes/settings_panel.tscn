@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dg2lsftc1a5nm"]
 
 [ext_resource type="Texture2D" uid="uid://btxhvmhokv74p" path="res://assets/Settings_panel.png" id="1_54ti7"]
-[ext_resource type="Script" uid="uid://bglbchj3p5uvo" path="res://Scripts/settings_panel.gd" id="1_tl2iu"]
+[ext_resource type="Script" uid="uid://bglbchj3p5uvo" path="res://scripts/settings_panel.gd" id="1_tl2iu"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="2_54ti7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
@@ -39,10 +39,10 @@ offset_bottom = 658.0
 z_index = 1
 y_sort_enabled = true
 layout_mode = 0
-offset_left = 200.0
-offset_top = 48.0
-offset_right = 344.0
-offset_bottom = 95.4583
+offset_left = 163.0
+offset_top = 52.0
+offset_right = 307.0
+offset_bottom = 99.4583
 theme_override_fonts/font = ExtResource("2_54ti7")
 theme_override_font_sizes/font_size = 22
 text = "Settings

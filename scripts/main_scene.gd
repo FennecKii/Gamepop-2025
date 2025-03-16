@@ -30,6 +30,7 @@ extends Control
 var legend_visible: bool = false
 var target_position = Vector2(500,0)
 var original_position = Vector2(-150,0)
+var is_jackpot: bool = false
 
 func _ready():
 	shop.visible = false
@@ -73,7 +74,8 @@ func check_results():
 			elif count == 5:
 				bonus += Global.bet_money * 2.5
 				win_this_spin = true
-				AudioPlayer.play_sfx(Global.jackpot)
+				AudioPlayer.play_sfx(Global.jackpot, 3)
+				is_jackpot = true
 			
 			if Global.current_round == 2:
 				bonus += Global.bet_money * 0.5
@@ -96,7 +98,8 @@ func check_results():
 			elif count == 5:
 				multiplier += 10
 				win_this_spin = true
-				AudioPlayer.play_sfx(Global.jackpot)
+				AudioPlayer.play_sfx(Global.jackpot, 3)
+				is_jackpot = true
 				
 			if Global.current_round == 2:
 				multiplier += 1
@@ -119,7 +122,8 @@ func check_results():
 			elif count == 5:
 				multiplier += 50
 				win_this_spin = true
-				AudioPlayer.play_sfx(Global.jackpot)
+				AudioPlayer.play_sfx(Global.jackpot, 3)
+				is_jackpot = true
 				
 			if Global.current_round == 2:
 				multiplier += 2
@@ -159,9 +163,9 @@ func win_check():
 		win_round_score_label.text = "Score: " + str(Global.player_score)
 		win_round_money_label.text = "Money: " + str(Global.player_money)
 		Global.init_game_state(Global.current_round, Global.target_score, 0, Global.player_money)
-		AudioPlayer.play_sfx(Global.round_win_sound)
+		AudioPlayer.play_sfx(Global.round_win_sound, 1)
 		win_round_anim.play("win")
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(2.5).timeout
 		win_round_panel.visible = true
 	
 	elif Global.player_score >= Global.target_score and Global.current_round == Global.max_rounds: # Final win condition
@@ -192,7 +196,11 @@ func _on_slot_machine_spin_pressed():
 	if spin_num <= Global.max_spins:
 		update_labels()
 		check_results()
-		win_check()
+		if is_jackpot == true:
+			await get_tree().create_timer(8.5).timeout
+			win_check()
+		else:
+			win_check()
 
 func update_score():
 	score_label.text = str(Global.player_score)
