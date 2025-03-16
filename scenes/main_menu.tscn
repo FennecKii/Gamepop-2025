@@ -1,21 +1,102 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3h2vmy126gmd"]
+[gd_scene load_steps=20 format=3 uid="uid://b3h2vmy126gmd"]
 
-[ext_resource type="Script" uid="uid://df3o4chinak62" path="res://Scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://df3o4chinak62" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://d4d6x4qfu18co" path="res://icon.svg" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://cy4dww07yufts" path="res://assets/Titlescreen.png" id="3_8ln24"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="3_bqqt6"]
+[ext_resource type="StyleBox" path="res://resources/play_button_style.tres" id="4_wu84c"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
-bg_color = Color(0, 1, 1, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0.466667, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 1
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtw2f"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa1go"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk1qb"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(3840, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(5120, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgwnu"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(6400, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flqon"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(7680, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcqid"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(8960, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ajci"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(10240, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b55j"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(11520, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pajh"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(12800, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7ex8"]
+atlas = ExtResource("3_8ln24")
+region = Rect2(14080, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8gd2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtw2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa1go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbmy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk1qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dd4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgwnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flqon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcqid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ajci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b55j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pajh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7ex8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
 bg_color = Color(0.670588, 0.12549, 0.992157, 1)
@@ -33,6 +114,7 @@ corner_radius_bottom_left = 4
 script = ExtResource("1_ekxnf")
 
 [node name="Background" type="ColorRect" parent="."]
+visible = false
 offset_right = 1296.0
 offset_bottom = 736.0
 color = Color(0.389203, 0.477871, 0.469872, 1)
@@ -42,17 +124,25 @@ position = Vector2(640, 176)
 scale = Vector2(4, 1)
 texture = ExtResource("2_bqqt6")
 
-[node name="Buttons" type="Control" parent="."]
+[node name="Background2" type="TextureRect" parent="."]
+offset_right = 1282.0
+offset_bottom = 721.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background2"]
+position = Vector2(640, 359)
+sprite_frames = SubResource("SpriteFrames_a8gd2")
+
+[node name="Buttons" type="Control" parent="Background2"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 72.0
-offset_top = 32.0
-offset_right = 1222.0
-offset_bottom = 712.0
+offset_left = 69.0
+offset_top = 101.0
+offset_right = 1219.0
+offset_bottom = 781.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background2/Buttons"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,7 +155,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 
-[node name="Play" type="Button" parent="Buttons/VBoxContainer"]
+[node name="Play" type="Button" parent="Background2/Buttons/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -81,11 +171,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_bqqt6")
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/normal = ExtResource("4_wu84c")
 text = "Play
 "
 
-[node name="Quit" type="Button" parent="Buttons/VBoxContainer"]
+[node name="Quit" type="Button" parent="Background2/Buttons/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -104,5 +194,5 @@ theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wu84c")
 text = "Quit"
 
-[connection signal="pressed" from="Buttons/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Background2/Buttons/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Background2/Buttons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -41,11 +41,24 @@ var player_prob_array: Array[int]
 @onready var jackpot = preload("res://audio/777.wav")
 @onready var add_money = preload("res://audio/Bad Button 002.wav")
 @onready var subtract_money = preload("res://audio/Bad Button 001.wav")
-@onready var lever = preload("res://audio/UI Positive Signal 002.wav")
+@onready var lever = preload("res://audio/lever-action-cocking-2-39680.mp3")
 @onready var round_win_sound = preload("res://audio/Jingle Win 002.wav")
 @onready var game_win_sound = preload("res://audio/Jingle Win 001.wav")
 @onready var game_lose_sound = preload("res://audio/Jingle Lose 001.wav")
 @onready var negative_feedback = preload("res://audio/Gain B 16-Bit.wav")
+@onready var spin_sound = preload("res://audio/mixkit-slot-machine-wheel-1932.wav")
+@onready var menu_music = preload("res://audio/background music/Lo-Fi Bond Intensity 2.wav")
+@onready var background_music1 = preload("res://audio/background music/Electronic Vol6 Lazer Invaders Intensity 1.wav")
+@onready var background_music2 = preload("res://audio/background music/Electronic Vol5 Golden Gates Intensity 1.wav")
+@onready var background_music3 = preload("res://audio/background music/Electronic Vol6 Bulletin Intensity 1.wav")
+@onready var background_music4 = preload("res://audio/background music/Electronic Vol6 Color Swing Intensity 1.wav")
+
+@onready var music_array: Array = [
+	background_music1,
+	background_music2,
+	background_music3,
+	background_music4
+]
 
 # Handles initialization of player's bank values, target money goal, slot machine size and display array initialization
 func init_game_state(round: int, target: int, score: int, money: int):
