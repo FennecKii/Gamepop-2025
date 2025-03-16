@@ -1,9 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyesgrb31hily"]
+[gd_scene load_steps=12 format=3 uid="uid://dyesgrb31hily"]
 
-[ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://scripts/main_scene.gd" id="1_pw63i"]
+[ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://Scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://pt4ljk687pwo" path="res://scenes/slot_machine_ui.tscn" id="2_7ykc4"]
 [ext_resource type="Texture2D" uid="uid://dq54kc6kfqnbc" path="res://assets/Background2.0.png" id="2_pu3yx"]
 [ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="4_pu3yx"]
+[ext_resource type="Texture2D" uid="uid://d2bntkb0k2vrb" path="res://assets/GameWin.png" id="5_c16ls"]
+[ext_resource type="Texture2D" uid="uid://bfdjq16srtawh" path="res://assets/Gameover.png" id="6_18nlu"]
+[ext_resource type="Texture2D" uid="uid://47cgnme274rp" path="res://assets/NextRoundWin.png" id="7_c1pb6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wevv"]
+atlas = ExtResource("7_c1pb6")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1cbu"]
+atlas = ExtResource("7_c1pb6")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mngbo"]
+atlas = ExtResource("7_c1pb6")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4w45t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wevv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1cbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mngbo")
+}],
+"loop": true,
+"name": &"win",
+"speed": 5.0
+}]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -79,69 +111,13 @@ text = "Spins
 horizontal_alignment = 1
 metadata/_edit_group_ = true
 
-[node name="WinRoundPanel" type="ColorRect" parent="."]
-visible = false
+[node name="WinPanel" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.266667, 0.6, 0.921569, 0.603922)
-metadata/_edit_group_ = true
-
-[node name="Round Won" type="Label" parent="WinRoundPanel"]
-layout_mode = 0
-offset_left = 536.0
-offset_top = 240.0
-offset_right = 619.0
-offset_bottom = 263.0
-text = "You Won :)"
-
-[node name="Shop" type="Button" parent="WinRoundPanel"]
-layout_mode = 0
-offset_left = 536.0
-offset_top = 336.0
-offset_right = 616.0
-offset_bottom = 360.0
-text = "Shop"
-
-[node name="LosePanel" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.611765, 0.537255, 0.996078, 0.635294)
-metadata/_edit_group_ = true
-
-[node name="You Lost" type="Label" parent="LosePanel"]
-layout_mode = 0
-offset_left = 536.0
-offset_top = 232.0
-offset_right = 616.0
-offset_bottom = 255.0
-text = "You Lost :("
-
-[node name="Play Again" type="Button" parent="LosePanel"]
-layout_mode = 0
-offset_left = 528.0
-offset_top = 304.0
-offset_right = 621.0
-offset_bottom = 335.0
-text = "Play Again!"
-
-[node name="Quit" type="Button" parent="LosePanel"]
-layout_mode = 0
-offset_left = 528.0
-offset_top = 352.0
-offset_right = 624.0
-offset_bottom = 383.0
-text = "Main Menu"
-
-[node name="WinPanel" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.933333, 0.580392, 0.694118, 0.470588)
-metadata/_edit_group_ = true
+offset_left = -30.0
+offset_top = 27.0
+offset_right = 1250.0
+offset_bottom = 747.0
+texture = ExtResource("5_c16ls")
 
 [node name="You Won" type="Label" parent="WinPanel"]
 layout_mode = 0
@@ -150,23 +126,95 @@ offset_bottom = 23.0
 
 [node name="Play Again" type="Button" parent="WinPanel"]
 layout_mode = 0
-offset_left = 528.0
-offset_top = 304.0
+offset_left = 438.0
+offset_top = 423.0
 offset_right = 621.0
-offset_bottom = 335.0
+offset_bottom = 503.0
 text = "Play Again!"
 
 [node name="Quit" type="Button" parent="WinPanel"]
 layout_mode = 0
-offset_left = 528.0
-offset_top = 352.0
-offset_right = 624.0
-offset_bottom = 383.0
+offset_left = 435.0
+offset_top = 516.0
+offset_right = 585.0
+offset_bottom = 591.0
+text = "Main Menu"
+
+[node name="LosePanel" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -26.0
+offset_top = 20.0
+offset_right = 1254.0
+offset_bottom = 740.0
+texture = ExtResource("6_18nlu")
+
+[node name="You Lost" type="Label" parent="LosePanel"]
+visible = false
+layout_mode = 0
+offset_left = 435.0
+offset_top = 358.0
+offset_right = 515.0
+offset_bottom = 381.0
+text = "You Lost :("
+
+[node name="Play Again" type="Button" parent="LosePanel"]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 422.0
+offset_right = 621.0
+offset_bottom = 502.0
+text = "Play Again!"
+
+[node name="Quit" type="Button" parent="LosePanel"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 516.0
+offset_right = 585.0
+offset_bottom = 590.0
+text = "Main Menu"
+
+[node name="WinRoundPanel" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Round Won" type="Label" parent="WinRoundPanel"]
+visible = false
+layout_mode = 0
+offset_left = 536.0
+offset_top = 240.0
+offset_right = 619.0
+offset_bottom = 263.0
+text = "You Won :)"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WinRoundPanel"]
+position = Vector2(606, 367)
+sprite_frames = SubResource("SpriteFrames_4w45t")
+animation = &"win"
+
+[node name="Shop" type="Button" parent="WinRoundPanel"]
+z_index = 1
+layout_mode = 0
+offset_left = 533.0
+offset_top = 426.0
+offset_right = 697.0
+offset_bottom = 499.0
+text = "Shop"
+
+[node name="Quit" type="Button" parent="WinRoundPanel"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 519.0
+offset_right = 698.0
+offset_bottom = 591.0
 text = "Main Menu"
 
 [connection signal="spin_pressed" from="SlotMachineUI" to="." method="_on_slot_machine_spin_pressed"]
-[connection signal="pressed" from="WinRoundPanel/Shop" to="." method="_on_shop_pressed"]
-[connection signal="pressed" from="LosePanel/Play Again" to="." method="_on_play_again_pressed"]
-[connection signal="pressed" from="LosePanel/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="WinPanel/Play Again" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="WinPanel/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="LosePanel/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="LosePanel/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="WinRoundPanel/Shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="WinRoundPanel/Quit" to="." method="_on_quit_pressed"]

@@ -3,6 +3,7 @@ extends Control
 @onready var score_label = $ScoreLabel
 @onready var goal_label = $GoalLabel
 @onready var win_round_panel = $WinRoundPanel
+@onready var win_round_anim = $WinRoundPanel/AnimatedSprite2D
 @onready var win_panel = $WinPanel
 @onready var lose_panel = $LosePanel
 @onready var rounds_label = $Round
@@ -16,6 +17,9 @@ var initial_money: int
 var is_jackpot: bool = false
 
 func _ready():
+	win_round_panel.visible = false
+	lose_panel.visible = false
+	win_panel.visible = false
 	# Initialize game state
 	Global.init_game_state(round_num, initial_target, 0, Global.player_money)
 	update_score()
@@ -74,6 +78,7 @@ func win_check():
 		round_num += 1
 		Global.init_game_state(round_num, Global.target_score*2, 0, Global.player_money)
 		AudioPlayer.play_sfx(Global.round_win_sound)
+		win_round_anim.play("win")
 		win_round_panel.visible = true
 	
 	elif Global.player_score >= Global.target_score and round_num == Global.max_rounds: # Final win condition
