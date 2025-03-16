@@ -11,6 +11,12 @@ extends Control
 @onready var slot_machine = $SlotMachineUI
 @onready var shop = $Shop
 @onready var streak_label = $StreakLabel
+@onready var win_round_score_label = $WinRoundPanel/ScoreWinRoundLabel
+@onready var win_round_money_label = $WinRoundPanel/MoneyWinRoundLabel
+@onready var lose_panel_score_label = $LosePanel/ScoreLossLabel
+@onready var lose_panel_money_label = $LosePanel/MoneyLossLabel
+@onready var win_panel_score_label = $WinPanel/ScoreWinLabel
+@onready var win_panel_money_label = $WinPanel/MoneyWinLabel
 
 var spin_num: int = 0
 var initial_target: int = 300
@@ -143,6 +149,8 @@ func win_check():
 		spin_num = 0
 		Global.current_round += 1
 		set_target_score(Global.current_round)
+		win_round_score_label.text = "Score: " + str(Global.player_score)
+		win_round_money_label.text = "Money: " + str(Global.player_money)
 		Global.init_game_state(Global.current_round, Global.target_score, 0, Global.player_money)
 		AudioPlayer.play_sfx(Global.round_win_sound)
 		win_round_anim.play("win")
@@ -152,6 +160,8 @@ func win_check():
 	elif Global.player_score >= Global.target_score and Global.current_round == Global.max_rounds: # Final win condition
 		award_reward()
 		spin_num = 0
+		win_panel_score_label.text = "Score: " + str(Global.player_score)
+		win_panel_money_label.text = "Money: " + str(Global.player_money)
 		Global.init_game_state(1, initial_target, 0, Global.player_money)
 		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_win_sound)
@@ -161,6 +171,8 @@ func win_check():
 	elif spin_num == Global.max_spins and Global.player_score < Global.target_score and Global.current_round <= Global.max_rounds or Global.player_money < 10: # Lose condition
 		spin_num = 0
 		Global.current_round = 1
+		lose_panel_score_label.text = "Score: " + str(Global.player_score)
+		lose_panel_money_label.text = "Money: " + str(Global.player_money)
 		Global.player_money = initial_money
 		await get_tree().create_timer(1).timeout
 		AudioPlayer.stop()
