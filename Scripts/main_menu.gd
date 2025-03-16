@@ -26,7 +26,3 @@ func _on_button_mouse_entered():
 func _on_settings_pressed():
 	AudioPlayer.play_sfx(Global.button_click, 5)
 	settings_panel.visible = true
-
-func _on_close_pressed():
-	AudioPlayer.play_sfx(Global.button_click, 5)
-	settings_panel.visible = false

@@ -29,6 +29,7 @@ var player_prob_array: Array[int]
 var base_reward: int = 50
 
 # Audio preloads
+# SFX sounds
 @onready var button_click = preload("res://audio/Mystic Click B.wav")
 @onready var button_hover = preload("res://audio/Funk Click A.wav")
 @onready var mystic_click = preload("res://audio/Mystic Select A.wav")
@@ -51,6 +52,11 @@ var base_reward: int = 50
 @onready var game_lose_sound = preload("res://audio/Jingle Lose 001.wav")
 @onready var negative_feedback = preload("res://audio/Gain B 16-Bit.wav")
 @onready var spin_sound = preload("res://audio/mixkit-slot-machine-wheel-1932.wav")
+@onready var legend_out = preload("res://audio/UI Cooking Action D.wav")
+@onready var legend_in = preload("res://audio/UI Cooking Action B.wav")
+@onready var streak_up = preload("res://audio/UI Positive Signal 002.wav")
+
+# Background music
 @onready var menu_music = preload("res://audio/background music/Lo-Fi Bond Intensity 2.wav")
 @onready var background_music1 = preload("res://audio/background music/Electronic Vol6 Lazer Invaders Intensity 1.wav")
 @onready var background_music2 = preload("res://audio/background music/Electronic Vol5 Golden Gates Intensity 1.wav")
