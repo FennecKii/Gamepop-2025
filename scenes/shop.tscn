@@ -88,7 +88,6 @@ theme_override_colors/font_outline_color = Color(0, 0.847765, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_xfvoa")
 theme_override_font_sizes/font_size = 22
-text = "|||||"
 
 [node name="UpgradeIncreaseProbLabel" type="Label" parent="."]
 layout_mode = 0
@@ -102,7 +101,6 @@ theme_override_colors/font_outline_color = Color(0, 0.847765, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_xfvoa")
 theme_override_font_sizes/font_size = 22
-text = "|||||||"
 
 [node name="PayoutIncreaseLabel" type="Label" parent="."]
 layout_mode = 0
@@ -130,7 +128,6 @@ theme_override_colors/font_outline_color = Color(0, 0.847765, 0, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_xfvoa")
 theme_override_font_sizes/font_size = 22
-text = "||||"
 
 [node name="NextRoundButton" type="Button" parent="."]
 layout_mode = 0
