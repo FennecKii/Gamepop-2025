@@ -112,7 +112,7 @@ theme_override_fonts/font = ExtResource("2_xfvoa")
 theme_override_font_sizes/font_size = 22
 text = "> Payout Increase (Cost)"
 
-[node name="UpgradeIncreaseProbLabel2" type="Label" parent="."]
+[node name="UpgradePayoutIncreaseLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 336.0
 offset_top = 353.0
