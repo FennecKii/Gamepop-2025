@@ -40,6 +40,7 @@ func _on_spin_button_pressed():
 		bet_prompt.visible = false
 	elif !is_spinning and Global.player_money >= Global.bet_money: 
 		is_spinning = true
+		AudioPlayer.play_sfx(Global.lever)
 		# Removes money from player when spining
 		Global.player_money -= Global.bet_money
 		money_update()
@@ -60,6 +61,7 @@ func _on_spin_button_pressed():
 				await get_tree().create_timer(0.75).timeout
 			# Disables visibility of spinning slots
 			slot_spin_displays[slot].visible = false
+			filter_audio(slot)
 			# Sets texture of texture rect
 			slot_displays[slot].texture = Global.texture_array[chosen_symbol]
 			slot_displays[slot].visible = true
@@ -81,9 +83,23 @@ func money_update():
 func _on_minus_button_pressed():
 	if Global.bet_money >= 10:
 		Global.bet_money -= 10
+		AudioPlayer.play_sfx(Global.subtract_money)
 		money_update()
 
 func _on_plus_button_pressed():
 	if Global.player_money >= 10:
 		Global.bet_money += 10
+		AudioPlayer.play_sfx(Global.add_money)
 		money_update()
+
+func filter_audio(position: int):
+	if position == 0:
+		AudioPlayer.play_sfx(Global.coin7_click)
+	elif position == 1:
+		AudioPlayer.play_sfx(Global.coin2_click)
+	elif position == 2:
+		AudioPlayer.play_sfx(Global.coin1_click)
+	elif position == 3:
+		AudioPlayer.play_sfx(Global.coin3_click)
+	elif position == 4:
+		AudioPlayer.play_sfx(Global.coin5_click)

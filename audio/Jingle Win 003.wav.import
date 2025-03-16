@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dq5xnrfmcf17h"
+path="res://.godot/imported/Jingle Win 003.wav-cf15c10ae638bb2b9ae918861accf4aa.sample"
+
+[deps]
+
+source_file="res://audio/Jingle Win 003.wav"
+dest_files=["res://.godot/imported/Jingle Win 003.wav-cf15c10ae638bb2b9ae918861accf4aa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
