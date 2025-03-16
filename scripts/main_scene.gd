@@ -60,7 +60,7 @@ func check_results():
 		# If there are 5 of a kind of any number → Add global.goal to bank
 		if count == 5:
 			Global.player_score += Global.target_score
-			AudioPlayer.play_sfx(Global.jackpot)
+			AudioPlayer.play_sfx(Global.jackpot, -1)
 			update_score()
 			is_jackpot = true
 			return  # Skip other calculations if 5 of a kind is met
@@ -86,6 +86,7 @@ func win_check():
 	elif Global.player_score >= Global.target_score and Global.current_round == Global.max_rounds: # Final win condition
 		spin_num = 0
 		Global.init_game_state(1, initial_target, 0, Global.player_money)
+		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_win_sound)
 		win_panel.visible = true
 	
@@ -93,6 +94,7 @@ func win_check():
 		spin_num = 0
 		Global.current_round = 1
 		Global.player_money = initial_money
+		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
 
@@ -118,18 +120,19 @@ func update_labels():
 
 func _on_shop_pressed():
 	update_score()
-	AudioPlayer.play_sfx(Global.coin4_click)
+	AudioPlayer.play_sfx(Global.shop_click, -2)
 	win_round_panel.visible = false
 	shop.visible = true
 
 func _on_play_again_pressed():
-	AudioPlayer.play_sfx(Global.mystic_click)
+	AudioPlayer._play_music(Global.music_array.pick_random(), -5)
+	AudioPlayer.play_sfx(Global.mystic_click,5)
 	Global.max_spins = 5
 	Global.init_game_state(1, initial_target, 0, initial_money)
 	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
 
 func _on_quit_pressed():
-	AudioPlayer.play_sfx(Global.button_click)
+	AudioPlayer.play_sfx(Global.button_click, 5)
 	AudioPlayer._play_music(Global.menu_music, 0.0)
 	Global.max_spins = 5
 	Global.init_game_state(1, initial_target, 0, initial_money)
@@ -141,6 +144,7 @@ func _on_shop_next_round_pressed():
 	if Global.player_money < 10:
 		spin_num = 0
 		await get_tree().create_timer(3).timeout
+		AudioPlayer.stop()
 		AudioPlayer.play_sfx(Global.game_lose_sound)
 		lose_panel.visible = true
 
