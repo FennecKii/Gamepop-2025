@@ -9,6 +9,7 @@ extends Control
 @onready var rounds_label = $Round
 @onready var spins_label = $Spins
 @onready var slot_machine = $SlotMachineUI
+@onready var shop = $Shop
 
 var round_num: int = 1
 var spin_num: int = 0
@@ -17,6 +18,7 @@ var initial_money: int
 var is_jackpot: bool = false
 
 func _ready():
+	shop.visible = false
 	win_round_panel.visible = false
 	lose_panel.visible = false
 	win_panel.visible = false
@@ -119,7 +121,7 @@ func _on_shop_pressed():
 	update_labels()
 	AudioPlayer.play_sfx(Global.coin4_click)
 	win_round_panel.visible = false
-	get_tree().change_scene_to_file("res://scenes/shop.tscn")
+	shop.visible = true
 
 func _on_play_again_pressed():
 	AudioPlayer.play_sfx(Global.mystic_click)
