@@ -280,7 +280,7 @@ func award_reward():
 func _on_button_mouse_entered():
 	AudioPlayer.play_sfx(Global.button_hover)
 
-
+#legend
 func _on_legend_button_pressed():
 	var tween = create_tween()
 	legend_visible = !legend_visible
