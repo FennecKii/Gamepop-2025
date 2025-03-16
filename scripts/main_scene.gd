@@ -26,7 +26,6 @@ extends Control
 var spin_num: int = 0
 var initial_target: int = 300
 var initial_money: int = 100
-var is_jackpot: bool = false
 var streak_counter = 0
 
 var legend_visible: bool = false
@@ -121,7 +120,6 @@ func check_results():
 				multiplier += 50
 				win_this_spin = true
 				AudioPlayer.play_sfx(Global.jackpot)
-				is_jackpot = true
 				
 			if Global.current_round == 2:
 				multiplier += 2
@@ -194,21 +192,21 @@ func _on_slot_machine_spin_pressed():
 	if spin_num <= Global.max_spins:
 		update_labels()
 		check_results()
-		if is_jackpot:
-			await get_tree().create_timer(3).timeout
-			win_check()
-		else:
-			win_check()
-		is_jackpot = false
+		win_check()
 
 func update_score():
 	score_label.text = str(Global.player_score)
 
 func update_labels():
-	streak_label.text = "Streak: " + str(streak_counter) + "x"
 	rounds_label.text = "Round: " + str(Global.current_round)
 	spins_label.text = "Spins\n" + str(Global.max_spins - spin_num)
 	goal_label.text = "Goal: " + str(Global.target_score)
+	if streak_counter > 0:
+		await get_tree().create_timer(1).timeout
+		AudioPlayer.play_sfx(Global.streak_up, -1)
+		streak_label.text = "Streak: " + str(streak_counter) + "x"
+	else:
+		streak_label.text = "Streak: " + str(streak_counter) + "x"
 
 func _on_shop_pressed():
 	update_score()
@@ -283,13 +281,16 @@ func _on_button_mouse_entered():
 #legend
 func _on_legend_button_pressed():
 	var tween = create_tween()
+	AudioPlayer.play_sfx(Global.button_click, 2)
 	legend_visible = !legend_visible
 	
 	var new_position: Vector2
 	if legend_visible:
 		new_position = target_position
+		AudioPlayer.play_sfx(Global.legend_out)
 	else:
 		new_position = original_position
+		AudioPlayer.play_sfx(Global.legend_in)
 	
 	tween.tween_property(legend, "position", new_position, 1.0)
 	legend_anim.play("default")

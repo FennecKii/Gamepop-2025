@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dyesgrb31hily"]
+[gd_scene load_steps=43 format=3 uid="uid://dyesgrb31hily"]
 
 [ext_resource type="Script" uid="uid://dfskktk5ebhiw" path="res://scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://pt4ljk687pwo" path="res://scenes/slot_machine_ui.tscn" id="2_7ykc4"]
@@ -12,63 +12,7 @@
 [ext_resource type="StyleBox" uid="uid://bydn60ggwjxn2" path="res://resources/gameover_button_style.tres" id="8_mngbo"]
 [ext_resource type="FontFile" uid="uid://dq578jcivuufm" path="res://resources/whitrabt.ttf" id="10_4w45t"]
 [ext_resource type="Texture2D" uid="uid://rp70v42ptrr8" path="res://assets/FinalLegend3.0.png" id="12_mngbo"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6wevv"]
-atlas = ExtResource("7_c1pb6")
-region = Rect2(0, 0, 1280, 720)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1cbu"]
-atlas = ExtResource("7_c1pb6")
-region = Rect2(1280, 0, 1280, 720)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mngbo"]
-atlas = ExtResource("7_c1pb6")
-region = Rect2(2560, 0, 1280, 720)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4w45t"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6wevv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e1cbu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mngbo")
-}],
-"loop": true,
-"name": &"win",
-"speed": 5.0
-}]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6p65"]
-bg_color = Color(2.58703e-06, 0.488575, 0.100372, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0, 0.0930955, 0, 1)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-shadow_size = 4
-shadow_offset = Vector2(2.56, 3.995)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_si52b"]
-bg_color = Color(0.835294, 0.584314, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_size = 6
-shadow_offset = Vector2(1.565, 4.465)
+[ext_resource type="PackedScene" uid="uid://b4jhoxr051786" path="res://scenes/settings_panel.tscn" id="13_4w45t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4w45t"]
 atlas = ExtResource("12_mngbo")
@@ -232,6 +176,63 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wevv"]
+atlas = ExtResource("7_c1pb6")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1cbu"]
+atlas = ExtResource("7_c1pb6")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mngbo"]
+atlas = ExtResource("7_c1pb6")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4w45t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wevv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1cbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mngbo")
+}],
+"loop": true,
+"name": &"win",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6p65"]
+bg_color = Color(2.58703e-06, 0.488575, 0.100372, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0.0930955, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_size = 4
+shadow_offset = Vector2(2.56, 3.995)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_si52b"]
+bg_color = Color(0.835294, 0.584314, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 6
+shadow_offset = Vector2(1.565, 4.465)
+
 [node name="MainScene" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -326,6 +327,24 @@ text = "Spins
 "
 horizontal_alignment = 1
 metadata/_edit_group_ = true
+
+[node name="LegendButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 643.0
+offset_right = 166.0
+offset_bottom = 694.0
+text = "Legend"
+
+[node name="Legend" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Legend"]
+position = Vector2(-315, 349)
+scale = Vector2(0.95085, 0.95085)
+sprite_frames = SubResource("SpriteFrames_j2yw6")
 
 [node name="WinPanel" type="TextureRect" parent="."]
 visible = false
@@ -548,25 +567,12 @@ offset_top = 84.0
 offset_right = 42.0
 offset_bottom = 84.0
 
-[node name="LegendButton" type="Button" parent="."]
+[node name="SettingsPanel" parent="." instance=ExtResource("13_4w45t")]
 layout_mode = 0
-offset_left = 49.0
-offset_top = 643.0
-offset_right = 166.0
-offset_bottom = 694.0
-text = "Legend"
-
-[node name="Legend" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Legend"]
-position = Vector2(-315, 349)
-scale = Vector2(0.95085, 0.95085)
-sprite_frames = SubResource("SpriteFrames_j2yw6")
 
 [connection signal="spin_pressed" from="SlotMachineUI" to="." method="_on_slot_machine_spin_pressed"]
+[connection signal="mouse_entered" from="LegendButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="LegendButton" to="." method="_on_legend_button_pressed"]
 [connection signal="mouse_entered" from="WinPanel/Play Again" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="WinPanel/Play Again" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="WinPanel/Play Again" to="SlotMachineUI" method="_on_play_again_pressed"]
@@ -587,4 +593,3 @@ sprite_frames = SubResource("SpriteFrames_j2yw6")
 [connection signal="pressed" from="WinRoundPanel/Quit" to="SlotMachineUI" method="_on_quit_pressed"]
 [connection signal="next_round_pressed" from="Shop" to="." method="_on_shop_next_round_pressed"]
 [connection signal="next_round_pressed" from="Shop" to="SlotMachineUI" method="_on_shop_next_round_pressed"]
-[connection signal="pressed" from="LegendButton" to="." method="_on_legend_button_pressed"]

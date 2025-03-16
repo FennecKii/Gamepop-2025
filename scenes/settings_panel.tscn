@@ -1,0 +1,197 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4jhoxr051786"]
+
+[ext_resource type="Script" uid="uid://bglbchj3p5uvo" path="res://scripts/settings_panel.gd" id="1_tl2iu"]
+[ext_resource type="FontFile" uid="uid://bcr5a16oks02i" path="res://resources/04B_30__.TTF" id="2_54ti7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0.670588, 0.12549, 0.992157, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.487058, 0.0150392, 0.734849, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="SettingsPanel" type="ColorRect"]
+visible = false
+z_index = 1
+y_sort_enabled = true
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_tl2iu")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 368.0
+offset_top = 144.0
+offset_right = 912.0
+offset_bottom = 616.0
+
+[node name="Settings" type="Label" parent="Panel"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 200.0
+offset_top = 48.0
+offset_right = 344.0
+offset_bottom = 95.4583
+theme_override_fonts/font = ExtResource("2_54ti7")
+theme_override_font_sizes/font_size = 22
+text = "Settings
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 144.0
+offset_right = -128.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Window" type="Label" parent="Panel/VBoxContainer"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_54ti7")
+text = "Window Mode"
+
+[node name="WindowMode" type="OptionButton" parent="Panel/VBoxContainer"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_54ti7")
+theme_override_font_sizes/font_size = 10
+alignment = 1
+selected = 1
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 2
+
+[node name="Master" type="Label" parent="Panel/VBoxContainer"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_54ti7")
+text = "Master"
+
+[node name="MasterVolume" type="HSlider" parent="Panel/VBoxContainer"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 2
+max_value = 5.0
+step = 0.05
+value = 1.0
+
+[node name="Music" type="Label" parent="Panel/VBoxContainer"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_54ti7")
+text = "Music"
+
+[node name="MusicVolume" type="HSlider" parent="Panel/VBoxContainer"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 2
+max_value = 5.0
+step = 0.05
+value = 1.0
+
+[node name="SFX" type="Label" parent="Panel/VBoxContainer"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_54ti7")
+text = "SFX"
+
+[node name="SFXVolume" type="HSlider" parent="Panel/VBoxContainer"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 2
+max_value = 5.0
+step = 0.05
+value = 1.0
+
+[node name="Close" type="Button" parent="Panel"]
+z_index = 1
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 320.0
+offset_top = 392.0
+offset_right = 400.0
+offset_bottom = 415.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_54ti7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wu84c")
+text = "Close"
+
+[node name="MainMenu" type="Button" parent="Panel"]
+z_index = 1
+y_sort_enabled = true
+offset_left = 128.0
+offset_top = 392.0
+offset_right = 253.0
+offset_bottom = 415.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_54ti7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wu84c")
+text = "Main Menu"
+
+[connection signal="item_selected" from="Panel/VBoxContainer/WindowMode" to="." method="_on_window_mode_item_selected"]
+[connection signal="drag_started" from="Panel/VBoxContainer/MasterVolume" to="." method="_on_volume_drag_started"]
+[connection signal="value_changed" from="Panel/VBoxContainer/MasterVolume" to="." method="_on_master_volume_changed"]
+[connection signal="drag_started" from="Panel/VBoxContainer/MusicVolume" to="." method="_on_volume_drag_started"]
+[connection signal="value_changed" from="Panel/VBoxContainer/MusicVolume" to="." method="_on_music_volume_changed"]
+[connection signal="drag_started" from="Panel/VBoxContainer/SFXVolume" to="." method="_on_volume_drag_started"]
+[connection signal="value_changed" from="Panel/VBoxContainer/SFXVolume" to="." method="_on_sfx_volume_changed"]
+[connection signal="mouse_entered" from="Panel/Close" to="." method="_on_button_entered"]
+[connection signal="pressed" from="Panel/Close" to="." method="_on_close_pressed"]
+[connection signal="mouse_entered" from="Panel/MainMenu" to="." method="_on_button_entered"]
+[connection signal="pressed" from="Panel/MainMenu" to="." method="_on_main_menu_pressed"]
