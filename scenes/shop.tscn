@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://hven3f66wiuo"]
+[gd_scene load_steps=5 format=3 uid="uid://hven3f66wiuo"]
 
-[ext_resource type="Script" uid="uid://8ghqmsio2ycc" path="res://scenes/shop.gd" id="1_1l46r"]
+[ext_resource type="Script" uid="uid://8ghqmsio2ycc" path="res://Scripts/shop.gd" id="1_1l46r"]
 [ext_resource type="Texture2D" uid="uid://bppypeup573ga" path="res://assets/Laptop2.0.png" id="1_lx5au"]
 [ext_resource type="FontFile" uid="uid://dq578jcivuufm" path="res://resources/whitrabt.ttf" id="2_xfvoa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l46r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.847059, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_1l46r")
@@ -11,6 +24,45 @@ script = ExtResource("1_1l46r")
 position = Vector2(636.5, 359)
 scale = Vector2(1.24316, 1.09877)
 texture = ExtResource("1_lx5au")
+
+[node name="Button" type="Button" parent="Laptop"]
+offset_left = 28.0
+offset_top = -192.0
+offset_right = 112.0
+offset_bottom = -166.0
+theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
+theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_xfvoa")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
+text = "Buy"
+
+[node name="Button2" type="Button" parent="Laptop"]
+offset_left = 28.5562
+offset_top = -45.5054
+offset_right = 108.556
+offset_bottom = -13.5054
+theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
+theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_xfvoa")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
+text = "Buy"
+
+[node name="Button3" type="Button" parent="Laptop"]
+offset_left = 187.023
+offset_top = 63.7076
+offset_right = 320.023
+offset_bottom = 95.7076
+theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
+theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_xfvoa")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
+text = "Next Round"
 
 [node name="Title" type="Label" parent="."]
 offset_left = 312.0
@@ -103,3 +155,30 @@ theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_xfvoa")
 theme_override_font_sizes/font_size = 22
 text = "||||"
+
+[node name="CurrentMoneyLabel" type="Label" parent="UpgradeIncreaseProbLabel2"]
+offset_left = -36.0
+offset_top = 89.0
+offset_right = 90.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.623724, 1, 0.594182, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.847765, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_xfvoa")
+theme_override_font_sizes/font_size = 22
+text = "Money:"
+
+[node name="Button" type="Button" parent="UpgradeIncreaseProbLabel2/CurrentMoneyLabel"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = -214.0
+offset_right = 478.0
+offset_bottom = -182.0
+theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
+theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_xfvoa")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
+text = "Buy"
