@@ -17,7 +17,9 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Shop" type="Node2D"]
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_1l46r")
 
 [node name="Laptop" type="Sprite2D" parent="."]
@@ -25,46 +27,8 @@ position = Vector2(636.5, 359)
 scale = Vector2(1.24316, 1.09877)
 texture = ExtResource("1_lx5au")
 
-[node name="Button" type="Button" parent="Laptop"]
-offset_left = 28.0
-offset_top = -192.0
-offset_right = 112.0
-offset_bottom = -166.0
-theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
-theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_xfvoa")
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
-text = "Buy"
-
-[node name="Button2" type="Button" parent="Laptop"]
-offset_left = 28.5562
-offset_top = -45.5054
-offset_right = 108.556
-offset_bottom = -13.5054
-theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
-theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_xfvoa")
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
-text = "Buy"
-
-[node name="Button3" type="Button" parent="Laptop"]
-offset_left = 187.023
-offset_top = 63.7076
-offset_right = 320.023
-offset_bottom = 95.7076
-theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
-theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_xfvoa")
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
-text = "Next Round"
-
 [node name="Title" type="Label" parent="."]
+layout_mode = 0
 offset_left = 312.0
 offset_top = 108.0
 offset_right = 353.0
@@ -78,6 +42,7 @@ theme_override_font_sizes/font_size = 22
 text = "> Hacks..."
 
 [node name="ExtraSpinLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 313.0
 offset_top = 153.0
 offset_right = 439.0
@@ -91,6 +56,7 @@ theme_override_font_sizes/font_size = 22
 text = "> Add Extra Spin (Cost)"
 
 [node name="IncreaseProbLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 313.0
 offset_top = 228.0
 offset_right = 653.0
@@ -105,6 +71,7 @@ text = "> Algorithm Override (Cost)
    -Change Probabilities"
 
 [node name="UpgradeExtraSpinLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 337.0
 offset_top = 185.0
 offset_right = 626.0
@@ -118,6 +85,7 @@ theme_override_font_sizes/font_size = 22
 text = "|||||"
 
 [node name="UpgradeIncreaseProbLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 338.0
 offset_top = 278.0
 offset_right = 627.0
@@ -130,7 +98,8 @@ theme_override_fonts/font = ExtResource("2_xfvoa")
 theme_override_font_sizes/font_size = 22
 text = "|||||||"
 
-[node name="IncreaseProbLabel2" type="Label" parent="."]
+[node name="PayoutIncreaseLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 314.0
 offset_top = 315.0
 offset_right = 654.0
@@ -144,6 +113,7 @@ theme_override_font_sizes/font_size = 22
 text = "> Payout Increase (Cost)"
 
 [node name="UpgradeIncreaseProbLabel2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 336.0
 offset_top = 353.0
 offset_right = 676.0
@@ -156,29 +126,76 @@ theme_override_fonts/font = ExtResource("2_xfvoa")
 theme_override_font_sizes/font_size = 22
 text = "||||"
 
-[node name="CurrentMoneyLabel" type="Label" parent="UpgradeIncreaseProbLabel2"]
-offset_left = -36.0
-offset_top = 89.0
-offset_right = 90.0
-offset_bottom = 113.0
-theme_override_colors/font_color = Color(0.623724, 1, 0.594182, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0.847765, 0, 1)
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("2_xfvoa")
-theme_override_font_sizes/font_size = 22
-text = "Money:"
-
-[node name="Button" type="Button" parent="UpgradeIncreaseProbLabel2/CurrentMoneyLabel"]
+[node name="NextRoundButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 373.0
-offset_top = -214.0
-offset_right = 478.0
-offset_bottom = -182.0
+offset_left = 903.0
+offset_top = 432.0
+offset_right = 1036.0
+offset_bottom = 464.0
 theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
 theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_xfvoa")
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
+action_mode = 0
+text = "Next Round"
+
+[node name="CurrentMoneyLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 442.0
+offset_right = 426.0
+offset_bottom = 466.0
+theme_override_colors/font_color = Color(0.623724, 1, 0.594182, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.847765, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_xfvoa")
+theme_override_font_sizes/font_size = 22
+text = "Current Money:"
+
+[node name="ExtraSpinBuyButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 689.0
+offset_top = 147.0
+offset_right = 773.0
+offset_bottom = 173.0
+theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
+theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_xfvoa")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
+action_mode = 0
+text = "Buy"
+
+[node name="ChangeProbBuyButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 691.0
+offset_top = 230.0
+offset_right = 771.0
+offset_bottom = 262.0
+theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
+theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_xfvoa")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
+action_mode = 0
+text = "Buy"
+
+[node name="PayoutIncreaseBuyButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 692.0
+offset_top = 310.0
+offset_right = 771.0
+offset_bottom = 342.0
+theme_override_colors/font_outline_color = Color(0, 0.847059, 0, 1)
+theme_override_colors/font_color = Color(0.623529, 1, 0.596078, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_xfvoa")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
+action_mode = 0
 text = "Buy"

@@ -16,8 +16,8 @@ enum IconID {BLANK, CHERRY, BANANA, SEVEN, KIWI, WATERMELON, TOMATO, AVOCADO, PI
 		seven_texture
 ]
 
-const max_rounds: int = 5
-const max_spins: int = 5
+var max_rounds: int = 5
+var max_spins: int = 5
 
 var bet_money: int
 var player_score: int
