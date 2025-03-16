@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gamepop 2025 Let's Go Gambling!"
-run/main_scene="uid://dyesgrb31hily"
+run/main_scene="uid://b3h2vmy126gmd"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 Global="*res://Scripts/Global.gd"
