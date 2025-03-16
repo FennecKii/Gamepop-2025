@@ -4,6 +4,9 @@ extends Node2D
 func _ready():
 	background.play("default")
 	AudioPlayer._play_music(Global.menu_music, 0.0)
+	AudioServer.set_bus_volume_db(0, -1)
+	AudioServer.set_bus_volume_db(1, -1)
+	AudioServer.set_bus_volume_db(2, -1)
 
 func _on_play_pressed():
 	AudioPlayer.play_sfx(Global.mystic_click, 5)
