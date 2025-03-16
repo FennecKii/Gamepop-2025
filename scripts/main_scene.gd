@@ -11,12 +11,18 @@ extends Control
 @onready var slot_machine = $SlotMachineUI
 @onready var shop = $Shop
 @onready var streak_label = $StreakLabel
+@onready var legend = $Legend
+@onready var legend_anim = $Legend/AnimatedSprite2D
 
 var spin_num: int = 0
 var initial_target: int = 300
 var initial_money: int = 100
 var is_jackpot: bool = false
 var streak_counter = 0
+
+var legend_visible: bool = false
+var target_position = Vector2(400,0)
+var original_position = Vector2(-150,0)
 
 func _ready():
 	shop.visible = false
@@ -258,3 +264,17 @@ func award_reward():
 
 func _on_button_mouse_entered():
 	AudioPlayer.play_sfx(Global.button_hover)
+
+
+func _on_legend_button_pressed():
+	var tween = create_tween()
+	legend_visible = !legend_visible
+	
+	var new_position: Vector2
+	if legend_visible:
+		new_position = target_position
+	else:
+		new_position = original_position
+	
+	tween.tween_property(legend, "position", new_position, 1.0)
+	legend_anim.play("default")
