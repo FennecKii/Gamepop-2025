@@ -10,11 +10,13 @@ extends Control
 @onready var spins_label = $Spins
 @onready var slot_machine = $SlotMachineUI
 @onready var shop = $Shop
+@onready var streak_label = $StreakLabel
 
 var spin_num: int = 0
-var initial_target: int = 10000
+var initial_target: int = 300
 var initial_money: int = 100
 var is_jackpot: bool = false
+var streak_counter = 0
 
 func _ready():
 	shop.visible = false
@@ -25,7 +27,7 @@ func _ready():
 	Global.init_game_state(1, initial_target, 0, initial_money)
 	update_score()
 	update_labels()
-
+	
 func check_results():
 	var counts = {}  # Dictionary to store occurrences of each number
 
@@ -35,49 +37,102 @@ func check_results():
 
 	# Apply scoring rules
 	var score_to_add = 0
-	var multiplier = 1
+	var multiplier = 0
+	var win_this_spin = false
+	var streak = 1
+	var bonus = 0
 
 	for num in counts.keys():
 		var count = counts[num]
 
 		if num == 1:  # Cherries (1) → Add 50 points per cherry & scales
-			score_to_add += count * 15
+			if count == 1:
+				bonus += Global.bet_money * 0.1
+			elif count == 2:
+				bonus += Global.bet_money * 0.25
+			elif count == 3:
+				bonus += Global.bet_money * 0.5
+				win_this_spin = true
+			elif count == 4:
+				bonus += Global.bet_money * 1
+				win_this_spin = true
+			elif count == 5:
+				bonus += Global.bet_money * 2.5
+				win_this_spin = true
+				AudioPlayer.play_sfx(Global.jackpot)
+			
+			if Global.current_round == 2:
+				bonus += Global.bet_money * 0.5
+			elif Global.current_round == 3:
+				bonus += Global.bet_money * 1
+			elif Global.current_round == 4:
+				bonus += Global.bet_money * 2
+			elif Global.current_round == 5:
+				bonus += Global.bet_money * 3
 				
 		elif num == 2:  # Bananas (2) → Apply multipliers based on count
-			score_to_add += count * 35
+			if count == 2:
+				multiplier += 1.5
+			elif count == 3:
+				multiplier += 2.5
+				win_this_spin = true
+			elif count == 4:
+				multiplier += 4
+				win_this_spin = true
+			elif count == 5:
+				multiplier += 10
+				win_this_spin = true
+				AudioPlayer.play_sfx(Global.jackpot)
+				
+			if Global.current_round == 2:
+				multiplier += 1
+			elif Global.current_round == 3:
+				multiplier += 2
+			elif Global.current_round == 4:
+				multiplier += 3
+			elif Global.current_round == 5:
+				multiplier += 4
 
 		elif num == 3:  # 7s (3) → Apply multipliers based on count
-			score_to_add += count * 130
-		
-		if count == 3:
-			multiplier = 3
-		
-		elif count == 4:
-			multiplier = 5
-		
-		elif count == 5:
-			multiplier = 10
-			AudioPlayer.play_sfx(Global.jackpot)
-			is_jackpot = true
-
-	# Add cherry points
+			if count == 2:
+				multiplier += 2
+			elif count == 3:
+				multiplier += 5
+				win_this_spin = true
+			elif count == 4:
+				multiplier += 15
+				win_this_spin = true
+			elif count == 5:
+				multiplier += 50
+				win_this_spin = true
+				AudioPlayer.play_sfx(Global.jackpot)
+				is_jackpot = true
+				
+			if Global.current_round == 2:
+				multiplier += 2
+			elif Global.current_round == 3:
+				multiplier += 3
+			elif Global.current_round == 4:
+				multiplier += 5
+			elif Global.current_round == 5:
+				multiplier += 7
 	
-	if Global.current_round == 1:
-		multiplier = multiplier
-	elif Global.current_round == 2:
-		multiplier = multiplier * 3
-	elif Global.current_round == 3:
-		multiplier = multiplier * 5
-	elif Global.current_round == 4:
-		multiplier = multiplier * 10
-	elif Global.current_round == 5:
-		multiplier = multiplier * 20
+	if win_this_spin == true:
+		streak_counter += 1
+	else:
+		streak_counter = 0
+	
+	if multiplier == 0:
+		multiplier = 1
+	
+	if streak_counter > 1:
+		streak = streak_counter
 		
-	print(score_to_add)
-	print(multiplier)
+	Global.player_score += ((Global.bet_money * multiplier) + bonus) * streak
 	print(Global.bet_money)
-	Global.player_score += (score_to_add * multiplier) * int(Global.bet_money * 0.25)
-	print(Global.player_score)
+	print("Multiplier: ", multiplier)
+	print("Bonus: ", bonus)
+	print("Streak Counter: ", streak_counter)
 	
 	update_score()
 	update_labels()
@@ -128,6 +183,7 @@ func update_score():
 	score_label.text = str(Global.player_score)
 
 func update_labels():
+	streak_label.text = "Streak: " + str(streak_counter)
 	rounds_label.text = "Round: " + str(Global.current_round)
 	spins_label.text = "Spins\n" + str(Global.max_spins - spin_num)
 	goal_label.text = "Goal: " + str(Global.target_score)
@@ -166,27 +222,32 @@ func set_target_score(round: int):
 	if round == 1:
 		Global.target_score = initial_target
 	if round == 2:
-		Global.target_score = 50000
+		Global.target_score = 620
 	if round == 3:
-		Global.target_score = 100000
+		Global.target_score = 2400
 	if round == 4:
-		Global.target_score = 250000
+		Global.target_score = 6300
 	if round == 5:
-		Global.target_score = 1000000
+		Global.target_score = 10000
 
 func calc_reward() -> int:
 	var base_reward = 0
-	var reward_multiplier: int = (Global.max_spins - spin_num) * 20
+	var reward_multiplier: int = (Global.max_spins - spin_num) * 5
 	if Global.current_round == 1:
-		base_reward = Global.base_reward
+		print(Global.player_score)
+		print(Global.target_score)
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)/2 + Global.base_reward * 0.25
 	elif Global.current_round == 2:
-		base_reward = 500
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)/2 + Global.base_reward * 0.5
 	elif Global.current_round == 3:
-		base_reward = 1000
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)/2 + Global.base_reward * 1
 	elif Global.current_round == 4:
-		base_reward = 2500
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)/2 + Global.base_reward * 2
 	elif Global.current_round == 5:
-		base_reward = 5000
+		base_reward = Global.base_reward + (Global.player_score - Global.target_score)/2 + Global.base_reward * 2.5
+		
+	print(base_reward)
+	print(reward_multiplier)
 	return base_reward + reward_multiplier
 	
 func award_reward():

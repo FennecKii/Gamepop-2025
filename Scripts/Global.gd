@@ -26,7 +26,7 @@ var target_score: int
 var slot_data: Array[int]
 var default_prob_array: Array[int] = [1, 1, 1, 2, 2, 3] 
 var player_prob_array: Array[int]
-var base_reward: int = 200
+var base_reward: int = 100
 
 # Audio preloads
 @onready var button_click = preload("res://audio/Funk Click A.wav")

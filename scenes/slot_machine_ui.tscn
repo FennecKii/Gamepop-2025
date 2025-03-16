@@ -475,6 +475,7 @@ offset_top = 241.0
 offset_right = 366.0
 offset_bottom = 264.0
 scale = Vector2(0.5, 0.5)
+theme_override_constants/outline_size = 19
 theme_override_fonts/font = ExtResource("3_s6ofq")
 text = "Bet: 0"
 horizontal_alignment = 1
@@ -487,7 +488,11 @@ offset_top = 269.0
 offset_right = 292.0
 offset_bottom = 285.333
 scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.0823529, 0.827451, 0.345098, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("3_s6ofq")
+theme_override_font_sizes/font_size = 20
 text = "Money:"
 
 [node name="MoneyPrompt" type="Label" parent="."]
