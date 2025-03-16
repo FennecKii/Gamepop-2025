@@ -30,7 +30,7 @@ var is_jackpot: bool = false
 var streak_counter = 0
 
 var legend_visible: bool = false
-var target_position = Vector2(400,0)
+var target_position = Vector2(500,0)
 var original_position = Vector2(-150,0)
 
 func _ready():
