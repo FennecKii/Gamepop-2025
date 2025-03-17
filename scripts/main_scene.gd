@@ -33,6 +33,7 @@ var legend_visible: bool = false
 var target_position = Vector2(500,0)
 var original_position = Vector2(-150,0)
 var is_jackpot: bool = false
+var is_jackpot7: bool = false
 
 func _ready():
 	shop.visible = false
@@ -74,9 +75,10 @@ func check_results():
 				bonus += Global.bet_money * 1
 				win_this_spin = true
 			elif count == 5:
+				multiplier += 1
 				bonus += Global.bet_money * 2.5
 				win_this_spin = true
-				AudioPlayer.play_sfx(Global.jackpot, 3)
+				AudioPlayer.play_sfx(Global.jackpot2, 3)
 				is_jackpot = true
 			
 			if Global.current_round == 2:
@@ -100,7 +102,7 @@ func check_results():
 			elif count == 5:
 				multiplier += 10
 				win_this_spin = true
-				AudioPlayer.play_sfx(Global.jackpot, 3)
+				AudioPlayer.play_sfx(Global.jackpot2, 3)
 				is_jackpot = true
 				
 			if Global.current_round == 2:
@@ -125,7 +127,7 @@ func check_results():
 				multiplier += 50
 				win_this_spin = true
 				AudioPlayer.play_sfx(Global.jackpot, 3)
-				is_jackpot = true
+				is_jackpot7 = true
 				
 			if Global.current_round == 2:
 				multiplier += 2
@@ -204,10 +206,15 @@ func _on_slot_machine_spin_pressed():
 	if spin_num <= Global.max_spins:
 		update_labels()
 		check_results()
-		if is_jackpot == true:
+		if is_jackpot7 == true:
 			block.visible = true
+			AudioPlayer.stop()
 			await get_tree().create_timer(8.5).timeout
+			AudioPlayer._play_music(Global.music_array.pick_random(), -6)
 			block.visible = false
+			win_check()
+			is_jackpot7 = false
+		elif is_jackpot == true:
 			win_check()
 			is_jackpot = false
 		else:
